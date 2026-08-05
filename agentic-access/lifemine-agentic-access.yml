@@ -1,0 +1,3530 @@
+generated: '2026-08-04'
+method: generated
+source: openapi/lifemine-content-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 268
+  by_action_class:
+    connected: 129
+    acting: 139
+  by_consequence:
+    read: 129
+    write: 139
+  human_in_the_loop_required: 0
+operations:
+- path: /
+  method: get
+  operationId: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oembed/1.0
+  method: get
+  operationId: getOembed10
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oembed/1.0/embed
+  method: get
+  operationId: getOembed10Embed
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oembed/1.0/proxy
+  method: get
+  operationId: getOembed10Proxy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /customgf/v2
+  method: get
+  operationId: getCustomgfV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /customgf/v2/forms/{id}/submissions
+  method: post
+  operationId: createCustomgfV2FormsByIdSubmissions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2
+  method: get
+  operationId: getWpV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/plugins/{plugin}
+  method: put
+  operationId: updateWpV2PluginsByPlugin
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/plugins/{plugin}
+  method: get
+  operationId: getWpV2PluginsByPlugin
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/plugins/{plugin}
+  method: post
+  operationId: createWpV2PluginsByPlugin
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/plugins/{plugin}
+  method: patch
+  operationId: patchWpV2PluginsByPlugin
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/plugins/{plugin}
+  method: delete
+  operationId: deleteWpV2PluginsByPlugin
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts
+  method: get
+  operationId: getWpV2Posts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/posts
+  method: post
+  operationId: createWpV2Posts
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{id}
+  method: get
+  operationId: getWpV2PostsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/posts/{id}
+  method: post
+  operationId: createWpV2PostsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{id}
+  method: put
+  operationId: updateWpV2PostsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{id}
+  method: patch
+  operationId: patchWpV2PostsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{id}
+  method: delete
+  operationId: deleteWpV2PostsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{parent}/revisions
+  method: get
+  operationId: getWpV2PostsByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/posts/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2PostsByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/posts/{parent}/revisions/{id}
+  method: delete
+  operationId: deleteWpV2PostsByParentRevisionsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{id}/autosaves
+  method: get
+  operationId: getWpV2PostsByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/posts/{id}/autosaves
+  method: post
+  operationId: createWpV2PostsByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/posts/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2PostsByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pages
+  method: get
+  operationId: getWpV2Pages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pages
+  method: post
+  operationId: createWpV2Pages
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{id}
+  method: get
+  operationId: getWpV2PagesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pages/{id}
+  method: post
+  operationId: createWpV2PagesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{id}
+  method: put
+  operationId: updateWpV2PagesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{id}
+  method: patch
+  operationId: patchWpV2PagesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{id}
+  method: delete
+  operationId: deleteWpV2PagesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{parent}/revisions
+  method: get
+  operationId: getWpV2PagesByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pages/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2PagesByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pages/{parent}/revisions/{id}
+  method: delete
+  operationId: deleteWpV2PagesByParentRevisionsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{id}/autosaves
+  method: get
+  operationId: getWpV2PagesByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pages/{id}/autosaves
+  method: post
+  operationId: createWpV2PagesByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/pages/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2PagesByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/media
+  method: get
+  operationId: getWpV2Media
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/media
+  method: post
+  operationId: createWpV2Media
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/media/{id}
+  method: get
+  operationId: getWpV2MediaById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/media/{id}
+  method: post
+  operationId: createWpV2MediaById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/media/{id}
+  method: put
+  operationId: updateWpV2MediaById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/media/{id}
+  method: patch
+  operationId: patchWpV2MediaById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/media/{id}
+  method: delete
+  operationId: deleteWpV2MediaById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/media/{id}/post-process
+  method: post
+  operationId: createWpV2MediaByIdPostProcess
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/media/{id}/edit
+  method: post
+  operationId: createWpV2MediaByIdEdit
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items
+  method: get
+  operationId: getWpV2MenuItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menu-items
+  method: post
+  operationId: createWpV2MenuItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items/{id}
+  method: get
+  operationId: getWpV2MenuItemsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menu-items/{id}
+  method: post
+  operationId: createWpV2MenuItemsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items/{id}
+  method: put
+  operationId: updateWpV2MenuItemsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items/{id}
+  method: patch
+  operationId: patchWpV2MenuItemsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items/{id}
+  method: delete
+  operationId: deleteWpV2MenuItemsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items/{id}/autosaves
+  method: get
+  operationId: getWpV2MenuItemsByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menu-items/{id}/autosaves
+  method: post
+  operationId: createWpV2MenuItemsByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menu-items/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2MenuItemsByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/blocks
+  method: get
+  operationId: getWpV2Blocks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/blocks
+  method: post
+  operationId: createWpV2Blocks
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{id}
+  method: get
+  operationId: getWpV2BlocksById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/blocks/{id}
+  method: post
+  operationId: createWpV2BlocksById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{id}
+  method: put
+  operationId: updateWpV2BlocksById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{id}
+  method: patch
+  operationId: patchWpV2BlocksById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{id}
+  method: delete
+  operationId: deleteWpV2BlocksById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{parent}/revisions
+  method: get
+  operationId: getWpV2BlocksByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/blocks/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2BlocksByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/blocks/{parent}/revisions/{id}
+  method: delete
+  operationId: deleteWpV2BlocksByParentRevisionsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{id}/autosaves
+  method: get
+  operationId: getWpV2BlocksByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/blocks/{id}/autosaves
+  method: post
+  operationId: createWpV2BlocksByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/blocks/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2BlocksByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates/{parent}/revisions
+  method: get
+  operationId: getWpV2TemplatesByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2TemplatesByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates/{parent}/revisions/{id}
+  method: delete
+  operationId: deleteWpV2TemplatesByParentRevisionsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/templates/{id}/autosaves
+  method: get
+  operationId: getWpV2TemplatesByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates/{id}/autosaves
+  method: post
+  operationId: createWpV2TemplatesByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/templates/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2TemplatesByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates
+  method: get
+  operationId: getWpV2Templates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates
+  method: post
+  operationId: createWpV2Templates
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/templates/lookup
+  method: get
+  operationId: getWpV2TemplatesLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates/{id}
+  method: get
+  operationId: getWpV2TemplatesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/templates/{id}
+  method: post
+  operationId: createWpV2TemplatesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/templates/{id}
+  method: put
+  operationId: updateWpV2TemplatesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/templates/{id}
+  method: patch
+  operationId: patchWpV2TemplatesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/templates/{id}
+  method: delete
+  operationId: deleteWpV2TemplatesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/{parent}/revisions
+  method: get
+  operationId: getWpV2TemplatePartsByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2TemplatePartsByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts/{parent}/revisions/{id}
+  method: delete
+  operationId: deleteWpV2TemplatePartsByParentRevisionsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/{id}/autosaves
+  method: get
+  operationId: getWpV2TemplatePartsByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts/{id}/autosaves
+  method: post
+  operationId: createWpV2TemplatePartsByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2TemplatePartsByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts
+  method: get
+  operationId: getWpV2TemplateParts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts
+  method: post
+  operationId: createWpV2TemplateParts
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/lookup
+  method: get
+  operationId: getWpV2TemplatePartsLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts/{id}
+  method: get
+  operationId: getWpV2TemplatePartsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/template-parts/{id}
+  method: post
+  operationId: createWpV2TemplatePartsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/{id}
+  method: put
+  operationId: updateWpV2TemplatePartsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/{id}
+  method: patch
+  operationId: patchWpV2TemplatePartsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/template-parts/{id}
+  method: delete
+  operationId: deleteWpV2TemplatePartsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/global-styles/{parent}/revisions
+  method: get
+  operationId: getWpV2GlobalStylesByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/global-styles/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2GlobalStylesByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/global-styles/themes/{stylesheet}/variations
+  method: get
+  operationId: getWpV2GlobalStylesThemesByStylesheetVariations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/global-styles/themes/{stylesheet}
+  method: get
+  operationId: getWpV2GlobalStylesThemesByStylesheet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/global-styles/{id}
+  method: get
+  operationId: getWpV2GlobalStylesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/global-styles/{id}
+  method: post
+  operationId: createWpV2GlobalStylesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/global-styles/{id}
+  method: put
+  operationId: updateWpV2GlobalStylesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/global-styles/{id}
+  method: patch
+  operationId: patchWpV2GlobalStylesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation
+  method: get
+  operationId: getWpV2Navigation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/navigation
+  method: post
+  operationId: createWpV2Navigation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{id}
+  method: get
+  operationId: getWpV2NavigationById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/navigation/{id}
+  method: post
+  operationId: createWpV2NavigationById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{id}
+  method: put
+  operationId: updateWpV2NavigationById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{id}
+  method: patch
+  operationId: patchWpV2NavigationById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{id}
+  method: delete
+  operationId: deleteWpV2NavigationById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{parent}/revisions
+  method: get
+  operationId: getWpV2NavigationByParentRevisions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/navigation/{parent}/revisions/{id}
+  method: get
+  operationId: getWpV2NavigationByParentRevisionsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/navigation/{parent}/revisions/{id}
+  method: delete
+  operationId: deleteWpV2NavigationByParentRevisionsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{id}/autosaves
+  method: get
+  operationId: getWpV2NavigationByIdAutosaves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/navigation/{id}/autosaves
+  method: post
+  operationId: createWpV2NavigationByIdAutosaves
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/navigation/{parent}/autosaves/{id}
+  method: get
+  operationId: getWpV2NavigationByParentAutosavesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-families
+  method: get
+  operationId: getWpV2FontFamilies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-families
+  method: post
+  operationId: createWpV2FontFamilies
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/font-families/{id}
+  method: get
+  operationId: getWpV2FontFamiliesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-families/{id}
+  method: post
+  operationId: createWpV2FontFamiliesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/font-families/{id}
+  method: put
+  operationId: updateWpV2FontFamiliesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/font-families/{id}
+  method: patch
+  operationId: patchWpV2FontFamiliesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/font-families/{id}
+  method: delete
+  operationId: deleteWpV2FontFamiliesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/font-families/{font_family_id}/font-faces
+  method: get
+  operationId: getWpV2FontFamiliesByFontFamilyIdFontFaces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-families/{font_family_id}/font-faces
+  method: post
+  operationId: createWpV2FontFamiliesByFontFamilyIdFontFaces
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/font-families/{font_family_id}/font-faces/{id}
+  method: get
+  operationId: getWpV2FontFamiliesByFontFamilyIdFontFacesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-families/{font_family_id}/font-faces/{id}
+  method: delete
+  operationId: deleteWpV2FontFamiliesByFontFamilyIdFontFacesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team
+  method: get
+  operationId: getWpV2Team
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/team
+  method: post
+  operationId: createWpV2Team
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team/{id}
+  method: get
+  operationId: getWpV2TeamById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/team/{id}
+  method: post
+  operationId: createWpV2TeamById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team/{id}
+  method: put
+  operationId: updateWpV2TeamById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team/{id}
+  method: patch
+  operationId: patchWpV2TeamById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team/{id}
+  method: delete
+  operationId: deleteWpV2TeamById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/types
+  method: get
+  operationId: getWpV2Types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/types/{type}
+  method: get
+  operationId: getWpV2TypesByType
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/statuses
+  method: get
+  operationId: getWpV2Statuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/statuses/{status}
+  method: get
+  operationId: getWpV2StatusesByStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/taxonomies
+  method: get
+  operationId: getWpV2Taxonomies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/taxonomies/{taxonomy}
+  method: get
+  operationId: getWpV2TaxonomiesByTaxonomy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/categories
+  method: get
+  operationId: getWpV2Categories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/categories
+  method: post
+  operationId: createWpV2Categories
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/categories/{id}
+  method: get
+  operationId: getWpV2CategoriesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/categories/{id}
+  method: post
+  operationId: createWpV2CategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/categories/{id}
+  method: put
+  operationId: updateWpV2CategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/categories/{id}
+  method: patch
+  operationId: patchWpV2CategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/categories/{id}
+  method: delete
+  operationId: deleteWpV2CategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/tags
+  method: get
+  operationId: getWpV2Tags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/tags
+  method: post
+  operationId: createWpV2Tags
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/tags/{id}
+  method: get
+  operationId: getWpV2TagsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/tags/{id}
+  method: post
+  operationId: createWpV2TagsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/tags/{id}
+  method: put
+  operationId: updateWpV2TagsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/tags/{id}
+  method: patch
+  operationId: patchWpV2TagsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/tags/{id}
+  method: delete
+  operationId: deleteWpV2TagsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menus
+  method: get
+  operationId: getWpV2Menus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menus
+  method: post
+  operationId: createWpV2Menus
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menus/{id}
+  method: get
+  operationId: getWpV2MenusById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menus/{id}
+  method: post
+  operationId: createWpV2MenusById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menus/{id}
+  method: put
+  operationId: updateWpV2MenusById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menus/{id}
+  method: patch
+  operationId: patchWpV2MenusById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/menus/{id}
+  method: delete
+  operationId: deleteWpV2MenusById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/wp_pattern_category
+  method: get
+  operationId: getWpV2WpPatternCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/wp_pattern_category
+  method: post
+  operationId: createWpV2WpPatternCategory
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/wp_pattern_category/{id}
+  method: get
+  operationId: getWpV2WpPatternCategoryById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/wp_pattern_category/{id}
+  method: post
+  operationId: createWpV2WpPatternCategoryById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/wp_pattern_category/{id}
+  method: put
+  operationId: updateWpV2WpPatternCategoryById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/wp_pattern_category/{id}
+  method: patch
+  operationId: patchWpV2WpPatternCategoryById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/wp_pattern_category/{id}
+  method: delete
+  operationId: deleteWpV2WpPatternCategoryById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team_categories
+  method: get
+  operationId: getWpV2TeamCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/team_categories
+  method: post
+  operationId: createWpV2TeamCategories
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team_categories/{id}
+  method: get
+  operationId: getWpV2TeamCategoriesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/team_categories/{id}
+  method: post
+  operationId: createWpV2TeamCategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team_categories/{id}
+  method: put
+  operationId: updateWpV2TeamCategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team_categories/{id}
+  method: patch
+  operationId: patchWpV2TeamCategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/team_categories/{id}
+  method: delete
+  operationId: deleteWpV2TeamCategoriesById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users
+  method: get
+  operationId: getWpV2Users
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/users
+  method: post
+  operationId: createWpV2Users
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{id}
+  method: get
+  operationId: getWpV2UsersById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/users/{id}
+  method: post
+  operationId: createWpV2UsersById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{id}
+  method: put
+  operationId: updateWpV2UsersById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{id}
+  method: patch
+  operationId: patchWpV2UsersById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{id}
+  method: delete
+  operationId: deleteWpV2UsersById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/me
+  method: get
+  operationId: getWpV2UsersMe
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/users/me
+  method: post
+  operationId: createWpV2UsersMe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/me
+  method: put
+  operationId: updateWpV2UsersMe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/me
+  method: patch
+  operationId: patchWpV2UsersMe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/me
+  method: delete
+  operationId: deleteWpV2UsersMe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{user_id}/application-passwords
+  method: get
+  operationId: getWpV2UsersByUserIdApplicationPasswords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/users/{user_id}/application-passwords
+  method: post
+  operationId: createWpV2UsersByUserIdApplicationPasswords
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{user_id}/application-passwords
+  method: delete
+  operationId: deleteWpV2UsersByUserIdApplicationPasswords
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{user_id}/application-passwords/introspect
+  method: get
+  operationId: getWpV2UsersByUserIdApplicationPasswordsIntrospect
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/users/{user_id}/application-passwords/{uuid}
+  method: get
+  operationId: getWpV2UsersByUserIdApplicationPasswordsByUuid
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/users/{user_id}/application-passwords/{uuid}
+  method: post
+  operationId: createWpV2UsersByUserIdApplicationPasswordsByUuid
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{user_id}/application-passwords/{uuid}
+  method: put
+  operationId: updateWpV2UsersByUserIdApplicationPasswordsByUuid
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{user_id}/application-passwords/{uuid}
+  method: patch
+  operationId: patchWpV2UsersByUserIdApplicationPasswordsByUuid
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/users/{user_id}/application-passwords/{uuid}
+  method: delete
+  operationId: deleteWpV2UsersByUserIdApplicationPasswordsByUuid
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/comments
+  method: get
+  operationId: getWpV2Comments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/comments
+  method: post
+  operationId: createWpV2Comments
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/comments/{id}
+  method: get
+  operationId: getWpV2CommentsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/comments/{id}
+  method: post
+  operationId: createWpV2CommentsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/comments/{id}
+  method: put
+  operationId: updateWpV2CommentsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/comments/{id}
+  method: patch
+  operationId: patchWpV2CommentsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/comments/{id}
+  method: delete
+  operationId: deleteWpV2CommentsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/search
+  method: get
+  operationId: getWpV2Search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/block-renderer/{name}
+  method: get
+  operationId: getWpV2BlockRendererByName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/block-renderer/{name}
+  method: post
+  operationId: createWpV2BlockRendererByName
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/block-types
+  method: get
+  operationId: getWpV2BlockTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/block-types/{namespace}
+  method: get
+  operationId: getWpV2BlockTypesByNamespace
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/block-types/{namespace}/{name}
+  method: get
+  operationId: getWpV2BlockTypesByNamespaceByName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/settings
+  method: get
+  operationId: getWpV2Settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/settings
+  method: post
+  operationId: createWpV2Settings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/settings
+  method: put
+  operationId: updateWpV2Settings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/settings
+  method: patch
+  operationId: patchWpV2Settings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/themes
+  method: get
+  operationId: getWpV2Themes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/themes/{stylesheet}
+  method: get
+  operationId: getWpV2ThemesByStylesheet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/plugins
+  method: get
+  operationId: getWpV2Plugins
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/plugins
+  method: post
+  operationId: createWpV2Plugins
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/sidebars
+  method: get
+  operationId: getWpV2Sidebars
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/sidebars/{id}
+  method: get
+  operationId: getWpV2SidebarsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/sidebars/{id}
+  method: post
+  operationId: createWpV2SidebarsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/sidebars/{id}
+  method: put
+  operationId: updateWpV2SidebarsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/sidebars/{id}
+  method: patch
+  operationId: patchWpV2SidebarsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widget-types
+  method: get
+  operationId: getWpV2WidgetTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/widget-types/{id}
+  method: get
+  operationId: getWpV2WidgetTypesById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/widget-types/{id}/encode
+  method: post
+  operationId: createWpV2WidgetTypesByIdEncode
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widget-types/{id}/render
+  method: post
+  operationId: createWpV2WidgetTypesByIdRender
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widgets
+  method: get
+  operationId: getWpV2Widgets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/widgets
+  method: post
+  operationId: createWpV2Widgets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widgets/{id}
+  method: get
+  operationId: getWpV2WidgetsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/widgets/{id}
+  method: post
+  operationId: createWpV2WidgetsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widgets/{id}
+  method: put
+  operationId: updateWpV2WidgetsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widgets/{id}
+  method: patch
+  operationId: patchWpV2WidgetsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/widgets/{id}
+  method: delete
+  operationId: deleteWpV2WidgetsById
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp/v2/block-directory/search
+  method: get
+  operationId: getWpV2BlockDirectorySearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/pattern-directory/patterns
+  method: get
+  operationId: getWpV2PatternDirectoryPatterns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/block-patterns/patterns
+  method: get
+  operationId: getWpV2BlockPatternsPatterns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/block-patterns/categories
+  method: get
+  operationId: getWpV2BlockPatternsCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1
+  method: get
+  operationId: getWpSiteHealthV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/tests/background-updates
+  method: get
+  operationId: getWpSiteHealthV1TestsBackgroundUpdates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/tests/loopback-requests
+  method: get
+  operationId: getWpSiteHealthV1TestsLoopbackRequests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/tests/https-status
+  method: get
+  operationId: getWpSiteHealthV1TestsHttpsStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/tests/dotorg-communication
+  method: get
+  operationId: getWpSiteHealthV1TestsDotorgCommunication
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/tests/authorization-header
+  method: get
+  operationId: getWpSiteHealthV1TestsAuthorizationHeader
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/directory-sizes
+  method: get
+  operationId: getWpSiteHealthV1DirectorySizes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-site-health/v1/tests/page-cache
+  method: get
+  operationId: getWpSiteHealthV1TestsPageCache
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-block-editor/v1
+  method: get
+  operationId: getWpBlockEditorV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-block-editor/v1/url-details
+  method: get
+  operationId: getWpBlockEditorV1UrlDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menu-locations
+  method: get
+  operationId: getWpV2MenuLocations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/menu-locations/{location}
+  method: get
+  operationId: getWpV2MenuLocationsByLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-block-editor/v1/export
+  method: get
+  operationId: getWpBlockEditorV1Export
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-block-editor/v1/navigation-fallback
+  method: get
+  operationId: getWpBlockEditorV1NavigationFallback
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-collections
+  method: get
+  operationId: getWpV2FontCollections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/font-collections/{slug}
+  method: get
+  operationId: getWpV2FontCollectionsBySlug
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-abilities/v1
+  method: get
+  operationId: getWpAbilitiesV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-abilities/v1/categories
+  method: get
+  operationId: getWpAbilitiesV1Categories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-abilities/v1/categories/{slug}
+  method: get
+  operationId: getWpAbilitiesV1CategoriesBySlug
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-abilities/v1/abilities/{name}/run
+  method: get
+  operationId: getWpAbilitiesV1AbilitiesByNameRun
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-abilities/v1/abilities/{name}/run
+  method: post
+  operationId: createWpAbilitiesV1AbilitiesByNameRun
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp-abilities/v1/abilities/{name}/run
+  method: put
+  operationId: updateWpAbilitiesV1AbilitiesByNameRun
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp-abilities/v1/abilities/{name}/run
+  method: patch
+  operationId: patchWpAbilitiesV1AbilitiesByNameRun
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp-abilities/v1/abilities/{name}/run
+  method: delete
+  operationId: deleteWpAbilitiesV1AbilitiesByNameRun
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wp-abilities/v1/abilities
+  method: get
+  operationId: getWpAbilitiesV1Abilities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp-abilities/v1/abilities/{name}
+  method: get
+  operationId: getWpAbilitiesV1AbilitiesByName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/icons
+  method: get
+  operationId: getWpV2Icons
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /wp/v2/icons/{name}
+  method: get
+  operationId: getWpV2IconsByName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

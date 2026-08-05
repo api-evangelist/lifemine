@@ -1,0 +1,124 @@
+generated: '2026-08-04'
+method: derived
+source:
+- openapi/lifemine-content-openapi.yml
+- openapi/lifemine-careers-openapi.yml
+- live responses observed 2026-08-04
+description: >
+  Which cross-cutting standards LifeMine's public API surfaces actually conform to. Every `true`
+  below is backed by a fetched artifact or an observed response header; every `false` is a real
+  measured absence. LifeMine makes no conformance claims of its own — the company publishes no API
+  documentation — so nothing here is a provider assertion.
+standards:
+- id: openapi
+  conforms: false
+  evidence: >
+    Neither host publishes an OpenAPI document. The two specs in openapi/ were derived by API
+    Evangelist from the WordPress route index and from live Greenhouse payloads.
+- id: json-schema
+  conforms: true
+  evidence: >
+    The WordPress host serves real JSON Schema per resource via HTTP OPTIONS (draft-04 flavour,
+    WordPress's schema dialect). Seven harvested verbatim to json-schema/ — post (28 properties),
+    page (26), attachment (33), team (20), category (10), tag (8), team_categories (10).
+- id: wordpress-rest-api-v2
+  conforms: true
+  evidence: >
+    /wp-json/ returns the canonical WordPress REST discovery document with 203 routes across 10
+    namespaces, `authentication: []`, and the standard `namespaces`/`routes`/`_links` shape.
+- id: greenhouse-job-board-api-v1
+  conforms: true
+  evidence: >
+    boards-api.greenhouse.io/v1/boards/lifeminetx answers every documented GET endpoint (board,
+    jobs, jobs/{id}, departments, offices, sections, education/*) with the documented shapes.
+- id: graphql
+  conforms: partial
+  evidence: >
+    A live WPGraphQL endpoint at /graphql accepts queries and reports RootQuery, but public
+    introspection is disabled — so it does not meet the GraphQL spec's expectation of an
+    introspectable schema for clients. See graphql/lifemine-graphql.yml.
+- id: rfc8288-web-linking
+  conforms: true
+  evidence: 'Observed `Link: <...page=2>; rel="next"` on paginated WordPress collections.'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >
+    Errors use the WordPress envelope {code, message, data.status}, not application/problem+json.
+    See errors/lifemine-problem-types.yml.
+- id: hal
+  conforms: partial
+  evidence: >
+    WordPress resources carry a `_links` object with self/collection/about/author/wp:term
+    relations and a `curies` array — HAL-influenced, but not a formal HAL media type
+    (Content-Type is application/json, not application/hal+json).
+- id: oembed
+  conforms: true
+  evidence: The oembed/1.0 namespace is registered with /embed and /proxy routes supporting format=json|xml.
+- id: rss-2.0
+  conforms: true
+  evidence: 'https://lifeminetx.com/feed/ returns application/rss+xml with a valid RSS 2.0 channel.'
+- id: sitemaps-xml
+  conforms: true
+  evidence: Yoast sitemap index at /sitemap_index.xml, declared in robots.txt.
+- id: robots-txt
+  conforms: true
+  evidence: '`User-agent: * / Disallow:` — nothing disallowed. Crawl-delay: 10.'
+- id: cors
+  conforms: true
+  evidence: >
+    Access-Control-Allow-Headers and Access-Control-Expose-Headers are set, exposing X-WP-Total,
+    X-WP-TotalPages and Link to cross-origin clients.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 security scheme on either surface; /.well-known/oauth-authorization-server returns 404.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on lifeminetx.com.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404.
+- id: a2a
+  conforms: false
+  evidence: Both /.well-known/agent-card.json and /.well-known/agent.json return 404. No agent card published.
+- id: mcp
+  conforms: false
+  evidence: No hosted MCP server found. mcp/lifemine-mcp.yml is a derived candidate, not a published server.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset or Deprecation headers observed.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header or parameter in any of the 203 registered routes.
+- id: rate-limit-headers
+  conforms: false
+  evidence: No RateLimit / X-RateLimit / Retry-After headers observed on either surface.
+- id: https-tls
+  conforms: true
+  evidence: 'TLSv1.3 on lifeminetx.com. See security/lifemine-domain-security.yml (HSTS: false).'
+- id: gdpr
+  conforms: partial
+  evidence: >
+    Not a LifeMine compliance claim. The careers surface returns per-job `data_compliance` blocks
+    with `type: gdpr` and consent/retention flags — that is Greenhouse's GDPR tooling, configured
+    on LifeMine's board and visible in the API. LifeMine publishes a privacy policy at
+    https://lifeminetx.com/privacy-policy/ but no certification or compliance programme.
+regulatory_context:
+  note: >
+    LifeMine is a clinical-stage biopharmaceutical company. Its regulated surface is clinical and
+    pharmaceutical (FDA IND/clinical-trial regulation, GxP), and none of that is expressed through
+    these APIs — no HL7 FHIR, no CDISC, no clinical-data endpoint exists on either host. The APIs
+    catalogued here carry corporate marketing content and job postings only.
+  standards_not_applicable: [fhir, hl7, cdisc, dicom, psd2, fapi, scim, odata]
+compliance_program:
+  published: false
+  certifications: []
+  detail: >
+    No trust center, no SOC 2 / ISO 27001 / HIPAA attestation and no compliance page were found by
+    probe or search. Accordingly no `Compliance` or `TrustCenter` pointer is wired in apis.yml.
+cross_links:
+  conventions: conventions/lifemine-conventions.yml
+  security: security/lifemine-domain-security.yml
+  well_known: well-known/lifemine-well-known.yml

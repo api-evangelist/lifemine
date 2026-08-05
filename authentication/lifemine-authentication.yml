@@ -1,0 +1,25 @@
+generated: '2026-08-04'
+method: derived
+source: openapi/lifemine-content-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress Application Passwords (RFC 7617 Basic). Route /wp/v2/users/{user_id}/application-passwords
+    is registered on this host. Write access only; not issued to the public.
+  sources:
+  - openapi/lifemine-content-openapi.yml
+- name: cookieNonce
+  type: apiKey
+  in: header
+  parameter: X-WP-Nonce
+  description: WordPress cookie authentication with an X-WP-Nonce header (first-party browser
+    context only). Advertised in Access-Control-Allow-Headers on this host.
+  sources:
+  - openapi/lifemine-content-openapi.yml

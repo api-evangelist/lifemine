@@ -1,0 +1,89 @@
+generated: '2026-08-04'
+method: derived
+source:
+- https://lifeminetx.com/wp-json/
+- openapi/lifemine-content-openapi.yml
+- openapi/lifemine-careers-openapi.yml
+description: >
+  Lifecycle posture for LifeMine's public API surfaces. LifeMine is a clinical-stage
+  biopharmaceutical company, not an API provider: it publishes no API versioning policy, no
+  deprecation policy, no SLA and no status page, because it does not present these endpoints as a
+  product. What IS recorded below is the versioning each underlying platform actually implements.
+  The absences are real and are stated as absences — no policy has been invented, and no
+  StatusPage or Deprecation pointer is wired in apis.yml because neither exists.
+versioning:
+  content:
+    scheme: namespaced-path
+    current: wp/v2
+    detail: >
+      WordPress versions each REST namespace independently in the URL. The `wp/v2` core namespace
+      has been stable since WordPress 4.7 (2016) and WordPress's own backward-compatibility
+      commitment covers it. Nine other namespaces are registered on this host at their own
+      versions: oembed/1.0, wp-abilities/v1, wp-site-health/v1, wp-block-editor/v1, customgf/v2,
+      yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1.
+    upstream_policy: https://developer.wordpress.org/rest-api/
+    note: >
+      The stability commitment belongs to WordPress and to the plugin vendors, not to LifeMine.
+      Plugin namespaces can appear, change or vanish with a plugin update on the site.
+  careers:
+    scheme: uri-path
+    current: v1
+    detail: Greenhouse Job Board API v1. Versioning and stability are Greenhouse's, not LifeMine's.
+    upstream_policy: https://developers.greenhouse.io/job-board.html
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  detail: >
+    No Sunset or Deprecation response header was observed on either surface, and LifeMine
+    publishes no deprecation policy. Endpoints can change without notice when the site's
+    WordPress core, theme or plugins are updated.
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+  detail: No service-level agreement is published; these are marketing-site endpoints.
+status_page:
+  url: null
+  detail: >
+    LifeMine operates no status page. The underlying platforms publish their own — WP Engine at
+    https://wpenginestatus.com/ and Greenhouse at https://status.greenhouse.io/ — but those are
+    vendor status pages covering the hosts, not a LifeMine commitment, and are recorded here as
+    context rather than wired as a StatusPage pointer.
+  upstream_vendor_pages:
+  - vendor: WP Engine
+    url: https://wpenginestatus.com/
+    covers: lifeminetx.com hosting
+  - vendor: Greenhouse
+    url: https://status.greenhouse.io/
+    covers: boards-api.greenhouse.io
+changelog:
+  published: false
+  detail: >
+    No API changelog exists. The closest dated public signal is the site's own content feed —
+    /wp-json/wp/v2/posts exposes `date`, `modified` and `modified_gmt` on every press release and
+    publication, and https://lifeminetx.com/feed/ carries the same as RSS. That tracks LifeMine's
+    news, not its API surface.
+content_freshness:
+  observed_on: '2026-08-04'
+  posts_total: 24
+  latest_post: '2025-04-08'
+  latest_post_title: LifeMine Announces First Participant Dosed in First-in-human Phase 1 Clinical Trial of LIFE-001
+  team_records: 15
+  media_items: 117
+  open_roles: 2
+  note: >
+    Counts read from X-WP-Total headers and the careers `meta.total`. Recorded as a dated
+    observation so a later run can measure drift.
+stability_assessment:
+  grade: incidental
+  detail: >
+    Both surfaces are byproducts of the platforms LifeMine buys — a WordPress site and a
+    Greenhouse job board — rather than an intentional API programme. They are genuinely useful and
+    genuinely public, but a consumer should assume no compatibility promise, no notice period and
+    no support channel for breakage.
+cross_links:
+  conventions: conventions/lifemine-conventions.yml
+  conformance: conformance/lifemine-conformance.yml

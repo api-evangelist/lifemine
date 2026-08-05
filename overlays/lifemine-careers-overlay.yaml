@@ -1,0 +1,68 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the LifeMine Careers API
+  version: 1.0.0
+extends: openapi/lifemine-careers-openapi.yml
+x-generated: '2026-08-04'
+x-method: generated
+x-source: >
+  Records the enhancements API Evangelist applied when deriving a spec for LifeMine's Greenhouse
+  job board (board token lifeminetx) from the Greenhouse Job Board API documentation plus live
+  payloads fetched on 2026-08-04.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profile: https://apievangelist.com/
+    x-apievangelist-repo: https://github.com/api-evangelist/lifemine
+    x-provider-publishes-spec: false
+    x-derivation-note: >
+      Endpoint and parameter surface from https://developers.greenhouse.io/job-board.html; every
+      schema property observed in a real response from LifeMine's own board.
+- target: $.info
+  update:
+    x-host-ownership:
+      host: boards-api.greenhouse.io
+      owned_by: Greenhouse Software, Inc.
+      content_owned_by: LifeMine
+      note: >
+        The data is LifeMine's; the platform, uptime, versioning and rate limiting are
+        Greenhouse's. A consumer's operational risk here sits with Greenhouse.
+- target: $.info
+  update:
+    x-observed-counts:
+      observed_on: '2026-08-04'
+      open_roles: 2
+      departments: 32
+      offices: 3
+      sections: 0
+      note: >
+        32 departments against 2 open roles — most departments are empty. Read `jobs[]` per
+        department rather than treating the taxonomy as a headcount signal.
+- target: $.info
+  update:
+    x-signal-value: >
+      For a clinical-stage biotech, open roles are the highest-signal public data the company
+      emits: hiring telegraphs which programmes are moving. Both roles observed were in
+      Watertown, Massachusetts — Clinical Operations and Discovery Biology/Proteomics.
+- target: $.info
+  update:
+    x-conventions: conventions/lifemine-conventions.yml
+    x-errors: errors/lifemine-problem-types.yml
+    x-data-model: data-model/lifemine-data-model.yml
+- target: $.paths['/jobs/{job_id}'].get
+  update:
+    x-apievangelist-note: >
+      Carries `ai_disclaimer`, `include_ai_disclaimer` and `ai_opt_out_request_url`. An agent
+      acting for a candidate should surface the opt-out URL to the person — it is how they decline
+      AI-assisted evaluation of their application.
+- target: $.paths['/jobs'].get
+  update:
+    x-apievangelist-note: >
+      No pagination and no filtering; the whole collection returns every call. `content` is opt-IN,
+      so the default response is light. Poll and diff on `id`, using `updated_at` to catch edits.
+- target: $.info
+  update:
+    x-candidate-handling: >
+      Application submission is a separate authenticated Greenhouse endpoint and is deliberately
+      excluded from this document. Never collect or transmit candidate data through this surface;
+      route people to the role's `absolute_url`.

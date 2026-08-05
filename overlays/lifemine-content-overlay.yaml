@@ -1,0 +1,86 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the LifeMine Website Content API
+  version: 1.0.0
+extends: openapi/lifemine-content-openapi.yml
+x-generated: '2026-08-04'
+x-method: generated
+x-source: >
+  Records the enhancements API Evangelist applied on top of the WordPress route index fetched from
+  https://lifeminetx.com/wp-json/. The harvested index is preserved unmodified at
+  openapi/_original/lifemine-wp-json-index.json; this overlay documents what we added so the
+  provider-published material and our additions stay separable.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profile: https://apievangelist.com/
+    x-apievangelist-repo: https://github.com/api-evangelist/lifemine
+    x-derivation-note: >
+      Derived, not published. Paths, methods, parameter names, types, defaults, enums and
+      descriptions were converted mechanically from the host's self-describing route index.
+      Response schemas were harvested verbatim via HTTP OPTIONS on each collection.
+    x-provider-publishes-spec: false
+- target: $.info
+  update:
+    x-surface-class: incidental
+    x-surface-note: >
+      This API is a byproduct of LifeMine running WordPress, not an intentional API product. It is
+      genuinely public and anonymous, but carries no compatibility promise, no SLA, no status page
+      and no support channel.
+- target: $.info
+  update:
+    x-scope-exclusions:
+      excluded_namespaces: [yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1]
+      reason: >
+        Real registered routes on the live host, but third-party plugin admin control planes
+        rather than LifeMine's content surface. All 203 routes remain in
+        openapi/_original/lifemine-wp-json-index.json.
+      included_namespaces: [wp/v2, oembed/1.0, wp-abilities/v1, wp-site-health/v1, wp-block-editor/v1, customgf/v2]
+- target: $.info
+  update:
+    x-observed-counts:
+      observed_on: '2026-08-04'
+      posts: 24
+      pages: 9
+      media: 117
+      team: 15
+      categories: 4
+      team_categories: 3
+      registered_routes_total: 203
+      namespaces_total: 10
+- target: $.info
+  update:
+    x-conventions: conventions/lifemine-conventions.yml
+    x-errors: errors/lifemine-problem-types.yml
+    x-data-model: data-model/lifemine-data-model.yml
+    x-lifecycle: lifecycle/lifemine-lifecycle.yml
+    x-conformance: conformance/lifemine-conformance.yml
+    x-agentic-access: agentic-access/lifemine-agentic-access.yml
+- target: $.info
+  update:
+    x-rate-limit-guidance:
+      published: false
+      headers: none
+      pacing_signal: 'robots.txt Crawl-delay: 10'
+      note: Expect silent edge throttling from Cloudflare/WP Engine/Wordfence rather than a 429 contract.
+- target: $.components.securitySchemes
+  update:
+    x-public-read: >
+      No security scheme applies to read operations. The discovery document advertises
+      "authentication": [] — there is no public credential to obtain, and none is needed.
+- target: $.paths['/wp/v2/team'].get
+  update:
+    x-apievangelist-note: >
+      The most valuable operation on this API. `team` is a custom post type, so LifeMine's
+      leadership, founders and board are structured records rather than HTML — see
+      skills/lifemine-map-leadership.md. People hold multiple taxonomy terms; deduplicate by id.
+- target: $.paths['/wp/v2/posts'].get
+  update:
+    x-apievangelist-note: >
+      Mixes LifeMine's own press releases with third-party earned media. Resolve `categories`
+      against /wp/v2/categories before attributing anything to the company.
+- target: $.paths['/wp/v2/search'].get
+  update:
+    x-apievangelist-note: >
+      Returns typed stubs across posts, pages and team — not bodies. Follow up with the
+      per-resource get operation.

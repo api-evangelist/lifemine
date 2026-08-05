@@ -1,0 +1,220 @@
+generated: '2026-08-04'
+method: derived
+source:
+- https://lifeminetx.com/wp-json/
+- openapi/lifemine-content-openapi.yml
+- openapi/lifemine-careers-openapi.yml
+- live response headers observed 2026-08-04
+description: >
+  Cross-cutting request/response semantics for LifeMine's two public API surfaces. Everything here
+  was observed on the wire or read from the hosts' own self-describing documents — LifeMine
+  publishes no API documentation of its own, so nothing below is a provider claim.
+surfaces:
+- key: content
+  name: LifeMine Website Content API (WordPress REST)
+  base_url: https://lifeminetx.com/wp-json
+  openapi: openapi/lifemine-content-openapi.yml
+- key: careers
+  name: LifeMine Careers API (Greenhouse Job Board)
+  base_url: https://boards-api.greenhouse.io/v1/boards/lifeminetx
+  openapi: openapi/lifemine-careers-openapi.yml
+
+authentication:
+  read: none
+  detail: >
+    Both surfaces serve their read operations anonymously — no key, no token, no signup. The
+    WordPress discovery document advertises `"authentication": []`, i.e. no authentication schemes
+    are exposed to API clients at all.
+  write:
+    content: >
+      WordPress writes require a logged-in WordPress user via cookie + `X-WP-Nonce`, or an
+      Application Password over HTTP Basic (the
+      /wp/v2/users/{user_id}/application-passwords routes are registered on this host). Neither is
+      issued to the public; anonymous writes return 401 `rest_forbidden`.
+    careers: >
+      The only Greenhouse write path is application submission, which is a separate authenticated
+      Job Board POST; the public GET surface captured here is read-only.
+  artifact: authentication/lifemine-authentication.yml
+
+pagination:
+  content:
+    style: page-number
+    params:
+    - name: page
+      default: 1
+      description: 1-based page index.
+    - name: per_page
+      default: 10
+      maximum: 100
+      description: Items per page.
+    - name: offset
+      description: Skip N items, as an alternative to page.
+    response_headers:
+    - name: X-WP-Total
+      description: Total number of items in the collection (observed 24 posts, 15 team, 117 media).
+    - name: X-WP-TotalPages
+      description: Total number of pages at the current per_page.
+    link_header:
+      rfc: RFC 8288
+      observed: '<https://lifeminetx.com/wp-json/wp/v2/posts?per_page=1&page=2>; rel="next"'
+      note: Web-linking `rel="next"` / `rel="prev"` for cursor-free traversal.
+    cors_exposure: >
+      Access-Control-Expose-Headers advertises X-WP-Total, X-WP-TotalPages and Link, so the
+      pagination signal is readable from browser and agent clients cross-origin.
+  careers:
+    style: none
+    detail: >
+      /jobs, /departments and /offices return the complete collection with no paging parameters;
+      /jobs carries a `meta.total` count instead. Only the /education/* reference endpoints take a
+      `page` parameter.
+
+field_selection:
+  content:
+    param: _fields
+    description: >
+      Comma-separated allowlist of response properties — a real sparse-fieldset control, and the
+      most useful lever for agents against this API, since a full post object is ~28 properties of
+      mostly rendered HTML.
+    example: /wp/v2/posts?_fields=id,date,slug,link,title
+  embedding:
+    param: _embed
+    description: >
+      Inline linked resources (author, featured media, terms) via the `_embedded` envelope instead
+      of following `_links`.
+  envelope:
+    param: _envelope
+    description: Wrap body, status and headers in a single JSON envelope for clients that cannot read headers.
+  careers:
+    param: content
+    description: >
+      Boolean opt-IN to the heavy field: /jobs omits the full HTML job description unless
+      `content=true`. /jobs/{id} takes `questions=true` and `pay_transparency=true` the same way.
+
+filtering_and_search:
+  content:
+    search: /wp/v2/search and the `search` parameter on every collection
+    ordering:
+      params: [orderby, order]
+      note: orderby accepts date, id, include, title, slug, modified and relevance; order is asc|desc.
+    date_windows: [after, before, modified_after, modified_before]
+    taxonomy: categories, categories_exclude, tags, tags_exclude, team_categories
+    status: Defaults to `publish` for anonymous callers; other statuses require authentication.
+  careers:
+    detail: No filtering surface; the collections are small enough to fetch whole.
+
+hypermedia:
+  content:
+    style: HAL-like `_links`
+    detail: >
+      Every resource carries a `_links` object with `self`, `collection`, `about`, `author`,
+      `replies`, `wp:attachment`, `wp:term` and `curies` relations. The discovery root at
+      /wp-json/ enumerates all 203 routes with their methods and argument schemas, making the API
+      self-describing without any published specification.
+  careers:
+    style: absolute URLs
+    detail: Each job carries `absolute_url` pointing at its public application page.
+
+schema_discovery:
+  content:
+    mechanism: HTTP OPTIONS
+    detail: >
+      OPTIONS on any collection returns that resource's full JSON Schema under `schema`, plus the
+      accepted args per method. This is how json-schema/ in this repo was harvested — seven real
+      schemas (post 28 properties, page 26, attachment 33, team 20, category 10, tag 8,
+      team_categories 10).
+  careers:
+    mechanism: none
+    detail: Greenhouse publishes prose docs; response shapes here were derived from live payloads.
+
+versioning:
+  content:
+    scheme: namespaced path
+    current: wp/v2
+    detail: >
+      Version lives in the namespace segment (`/wp-json/wp/v2/...`). Ten namespaces are registered
+      on this host, each independently versioned: wp/v2, oembed/1.0, wp-abilities/v1,
+      wp-site-health/v1, wp-block-editor/v1, customgf/v2, yoast/v1, wordfence/v1,
+      wpe/cache-plugin/v1, wpe_sign_on_plugin/v1.
+  careers:
+    scheme: uri-path
+    current: v1
+  artifact: lifecycle/lifemine-lifecycle.yml
+
+error_envelope:
+  format: WordPress REST error object
+  rfc9457: false
+  shape:
+    code: Machine-readable string, e.g. rest_forbidden, rest_no_route.
+    message: Human-readable sentence.
+    data:
+      status: HTTP status repeated in the body.
+  observed:
+  - status: 401
+    body: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  - status: 404
+    body: '{"code":"rest_no_route","message":"No route was found matching the URL and request method.","data":{"status":404}}'
+  careers:
+    shape: '{"error": "..."}'
+  artifact: errors/lifemine-problem-types.yml
+
+idempotency:
+  supported: false
+  detail: >
+    Neither surface documents or implements an idempotency key. No Idempotency-Key header or
+    parameter appears anywhere in the 203 registered WordPress routes or in the Greenhouse Job
+    Board API. This is recorded as an honest absence — no `Idempotency` pointer is wired in
+    apis.yml, because there is no idempotency contract to point at. Read operations are naturally
+    safe to retry; there is no public write surface for an agent to make non-idempotent.
+
+request_tracing:
+  request_id_header: none
+  detail: >
+    No X-Request-Id or correlation header is returned. The only per-request identifiers observed
+    are infrastructure ones — Cloudflare's `cf-ray` and the `x-cache` / `x-cache-group` pair from
+    WP Engine — neither of which is a documented client-facing trace id.
+
+rate_limiting:
+  documented: false
+  headers: none
+  detail: >
+    No RateLimit / X-RateLimit / Retry-After headers were observed on either surface, and neither
+    host documents a quota. Both sit behind edge protection that may throttle silently: the
+    WordPress host is fronted by Cloudflare on WP Engine with Wordfence installed, and robots.txt
+    asks crawlers for `Crawl-delay: 10`. Treat 10s between requests as the only published pacing
+    signal, and expect edge-level blocking rather than a 429 contract.
+
+caching:
+  content:
+    cache_control: 'max-age=600, must-revalidate'
+    edge: 'WP Engine page cache (x-cacheable: SHORT, x-cache: HIT) behind Cloudflare (cf-cache-status: DYNAMIC)'
+    detail: Ten-minute freshness window on collection reads.
+  robots_tag: 'x-robots-tag: noindex is returned on API responses — the JSON surface is deliberately kept out of search indexes.'
+
+cors:
+  allow_headers: Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type
+  expose_headers: X-WP-Total, X-WP-TotalPages, Link
+  detail: Cross-origin browser clients can read the pagination signal directly.
+
+content_negotiation:
+  media_type: application/json; charset=UTF-8
+  alternatives:
+    oembed: /wp-json/oembed/1.0/embed supports format=json|xml for embed responses.
+
+security_notes:
+  user_enumeration: >
+    /wp/v2/users is registered and readable, which is the standard WordPress author-enumeration
+    surface. Recorded as an observation of the deployed configuration, not as a finding — it is
+    default WordPress behaviour and exposes only public author profiles.
+  gated_namespaces: >
+    wp-abilities/v1 (the WordPress Abilities API, an agent-oriented capability registry) returns
+    401 rest_forbidden anonymously, as do /wp/v2/settings and the plugin admin namespaces. The
+    Abilities surface is the one place this site could expose real agent capabilities, and it is
+    closed to the public.
+
+cross_links:
+  errors: errors/lifemine-problem-types.yml
+  lifecycle: lifecycle/lifemine-lifecycle.yml
+  authentication: authentication/lifemine-authentication.yml
+  conformance: conformance/lifemine-conformance.yml
+  data_model: data-model/lifemine-data-model.yml
+  graphql: graphql/lifemine-graphql.yml

@@ -1,0 +1,97 @@
+generated: '2026-08-04'
+method: derived
+source:
+- openapi/lifemine-content-openapi.yml
+- openapi/lifemine-careers-openapi.yml
+- live responses observed 2026-08-04
+format: wordpress-rest-error
+rfc9457: false
+description: >
+  Error catalog for LifeMine's two public API surfaces. The WordPress REST API does NOT use RFC
+  9457 problem+json; it returns its own JSON envelope with a machine-readable `code`, a `message`,
+  and `data.status`. Codes marked `observed: true` were returned by LifeMine's own host during the
+  2026-08-04 probe. Codes marked `observed: false` are documented WordPress core codes that this
+  deployment can return for the routes it registers — they are labelled as such rather than
+  presented as measured, and none were invented.
+envelope:
+  media_type: application/json
+  fields:
+    code: Machine-readable error slug.
+    message: Human-readable sentence, localized to the site language.
+    data.status: HTTP status code, repeated in the body.
+  example: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  additional_data: >
+    Some codes add `data.params` (per-parameter validation detail) or `data.details` alongside
+    `status`.
+problems:
+- code: rest_forbidden
+  status: 401
+  title: Not authenticated or not permitted
+  observed: true
+  observed_on:
+  - https://lifeminetx.com/wp-json/wp/v2/settings
+  - https://lifeminetx.com/wp-json/wp-abilities/v1/abilities
+  - https://lifeminetx.com/wp-json/wp-abilities/v1/categories
+  meaning: >
+    The route exists but the anonymous caller has no capability for it. WordPress returns 401 for
+    an unauthenticated caller and 403 for an authenticated one lacking the capability.
+  remediation: >
+    Read-only public consumption should avoid these routes entirely. There is no public credential
+    to obtain — write and settings access require a WordPress account on lifeminetx.com.
+- code: rest_no_route
+  status: 404
+  title: No route matched
+  observed: true
+  observed_on:
+  - https://lifeminetx.com/wp-json/wpe/cache-plugin/v1/rate_limit_status
+  meaning: No registered route matches the URL and HTTP method combination.
+  remediation: >
+    Re-read the live route index at /wp-json/ (saved verbatim to
+    openapi/_original/lifemine-wp-json-index.json). Note this is also returned when the path is
+    right but the METHOD is wrong.
+- code: rest_post_invalid_id
+  status: 404
+  title: Invalid resource id
+  observed: false
+  source: WordPress core (documented behaviour of the registered wp/v2 single-resource routes)
+  meaning: The id in the path does not resolve to a post of the expected type.
+  remediation: List the collection first and use an id from it.
+- code: rest_invalid_param
+  status: 400
+  title: Invalid parameter
+  observed: false
+  source: WordPress core parameter validation on the registered routes
+  meaning: >
+    A query parameter failed the route's own schema validation — wrong type, out of range, or
+    outside an enum. `data.params` names the offending parameter.
+  remediation: >
+    Every parameter's type, default and enum is published in the route index and in
+    openapi/lifemine-content-openapi.yml. Common trip-ups on this host are `per_page` above 100
+    and an `orderby` value outside the enum.
+- code: rest_invalid_page_number
+  status: 400
+  title: Page number out of range
+  observed: false
+  source: WordPress core
+  meaning: The requested page exceeds X-WP-TotalPages.
+  remediation: Read X-WP-TotalPages from the first response before walking pages.
+- code: rest_cannot_view
+  status: 401
+  title: Cannot view this resource
+  observed: false
+  source: WordPress core
+  meaning: The resource exists but is not published, or the requested `context=edit` needs auth.
+  remediation: Use the default `context=view`; anonymous callers only ever see `status=publish` items.
+careers_surface:
+  host: boards-api.greenhouse.io
+  envelope: '{"error": "..."}'
+  note: >
+    Greenhouse's Job Board API uses a different, simpler envelope. No error response was triggered
+    against LifeMine's board during the probe (every documented GET returned 200), so no Greenhouse
+    error codes are catalogued here rather than guessed. A 404 is returned for an unknown board
+    token, job id, department id or office id.
+cross_links:
+  conventions: conventions/lifemine-conventions.yml
+  openapi:
+  - openapi/lifemine-content-openapi.yml
+  - openapi/lifemine-careers-openapi.yml

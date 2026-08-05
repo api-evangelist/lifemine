@@ -1,0 +1,47 @@
+generated: '2026-08-04'
+method: probed
+source: https://lifeminetx.com/graphql
+description: >
+  LifeMine's website exposes a live WPGraphQL endpoint alongside the WordPress REST API. The
+  endpoint answers anonymously and confirms its root type, but schema introspection is disabled for
+  public requests, so no SDL could be captured. NO SCHEMA IS RECORDED HERE — only what the probe
+  actually observed. Do not synthesize an SDL for this endpoint; it requires authenticated
+  introspection or the site owner enabling public introspection in WPGraphQL settings.
+endpoint: https://lifeminetx.com/graphql
+transport: http
+methods:
+- GET
+- POST
+introspection:
+  enabled: false
+  gated: true
+  observed_error: >
+    The query contained __schema or __type, however GraphQL introspection is not allowed for public
+    requests by default. Public introspection can be enabled under the WPGraphQL Settings.
+  probe:
+    request: '{"query":"{__schema{queryType{name}}}"}'
+    http_status: 200
+    result: errors[] returned — introspection blocked
+root_type_confirmed:
+  query: '{__typename}'
+  http_status: 200
+  response: '{"data":{"__typename":"RootQuery"}}'
+  note: RootQuery is the WPGraphQL default query root type, confirming a WPGraphQL install.
+implementation:
+  server: WPGraphQL (WordPress plugin)
+  evidence: >
+    Response extensions carry WPGraphQL-specific keys — `graphqlSmartCache.graphqlObjectCache` and
+    a DEBUG_LOGS_INACTIVE notice referencing GRAPHQL_DEBUG — plus the RootQuery root type.
+  caching: graphqlSmartCache present (WPGraphQL Smart Cache plugin)
+surface_relationship: >
+  WPGraphQL projects the same WordPress content core that the REST API exposes (posts, pages,
+  media, the `team` custom post type and its taxonomies), so it is expected to overlap heavily with
+  openapi/lifemine-content-openapi.yml rather than add a distinct capability set. That expectation
+  is NOT recorded as a mapping anywhere in this repo, because introspection is gated and the
+  overlap cannot be verified. See mcp/lifemine-tool-crosswalk.yml, where the GraphQL column is
+  marked unverifiable for the same reason.
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://lifeminetx.com/graphql
+  http_status: 200
+  content_type: application/json

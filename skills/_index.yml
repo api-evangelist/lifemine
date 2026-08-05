@@ -1,0 +1,43 @@
+generated: '2026-08-04'
+method: generated
+source:
+- openapi/lifemine-content-openapi.yml
+- openapi/lifemine-careers-openapi.yml
+description: >
+  Packaged agent skills for LifeMine's two public read APIs. Every step in every skill is grounded
+  in an operationId that exists verbatim in the referenced spec, and every spec was derived from
+  documents fetched from the live hosts. LifeMine publishes no AGENTS.md and no skills of its own —
+  a search of the site, its repos and its /.well-known/ surface found none — so these are
+  generated, not harvested.
+skills:
+- file: lifemine-track-company-news.md
+  name: Track LifeMine company news
+  description: >
+    Pull press releases, publications and in-the-news coverage; distinguish LifeMine's own
+    announcements from third-party media; page correctly and watch for new items.
+  api: openapi/lifemine-content-openapi.yml
+  operations: [getWpV2Posts, getWpV2PostsById, getWpV2Categories, getWpV2Search]
+- file: lifemine-map-leadership.md
+  name: Map LifeMine leadership and board
+  description: >
+    Read the `team` custom post type as structured people records grouped by leadership, founders
+    and board-of-directors, with biographies and headshots.
+  api: openapi/lifemine-content-openapi.yml
+  operations: [getWpV2Team, getWpV2TeamById, getWpV2TeamCategories, getWpV2Media]
+- file: lifemine-monitor-open-roles.md
+  name: Monitor LifeMine open roles
+  description: >
+    Read open positions, departments and offices from the public Greenhouse job board; surface
+    the AI opt-out URL to candidates; watch for new postings.
+  api: openapi/lifemine-careers-openapi.yml
+  operations: [listJobs, getJob, listDepartments, listOffices]
+conventions_referenced: conventions/lifemine-conventions.yml
+errors_referenced: errors/lifemine-problem-types.yml
+notes:
+  read_only: >
+    All three skills are read-only. Neither surface offers a public write path — WordPress writes
+    need a credential that is not issued to the public, and Greenhouse application submission is a
+    separate authenticated endpoint deliberately excluded.
+  no_idempotency: >
+    Neither host implements an idempotency key. This matters less than usual here because there is
+    no public write surface to make non-idempotent.

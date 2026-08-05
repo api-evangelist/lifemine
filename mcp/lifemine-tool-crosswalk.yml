@@ -1,0 +1,163 @@
+generated: '2026-08-04'
+method: derived
+source:
+- mcp/lifemine-mcp.yml
+- openapi/lifemine-content-openapi.yml
+- openapi/lifemine-careers-openapi.yml
+- graphql/lifemine-graphql.yml
+description: >
+  Binds every candidate MCP tool to the OpenAPI operation that backs it, so each tool inherits a
+  REAL input schema instead of a guessed one. Confidence is `high` throughout because both the
+  tools and the operations were derived from the same fetched documents in this repo — there is no
+  provider-published tool list to reconcile against. The GraphQL column is unverifiable: the
+  endpoint is live but public introspection is disabled, so no field-level mapping is asserted.
+surfaces:
+  openapi:
+  - file: openapi/lifemine-content-openapi.yml
+    base_url: https://lifeminetx.com/wp-json
+    operations: 268
+    gated: false
+    note: Read operations anonymous; write operations return 401 rest_forbidden without a WordPress credential.
+  - file: openapi/lifemine-careers-openapi.yml
+    base_url: https://boards-api.greenhouse.io/v1/boards/lifeminetx
+    operations: 12
+    gated: false
+  graphql:
+    endpoint: https://lifeminetx.com/graphql
+    gated: true
+    reason: >
+      WPGraphQL public introspection disabled. Root type confirmed as RootQuery, but no schema
+      could be read, so no GraphQL field is mapped in any row below.
+  mcp:
+    url: null
+    published: false
+    gated: null
+    note: No MCP server exists. Tools are candidates derived from the OpenAPIs.
+crosswalk:
+- tool: list_news
+  category: content
+  rest: [getWpV2Posts]
+  binding: rest
+  confidence: high
+- tool: get_news_item
+  category: content
+  rest: [getWpV2PostsById]
+  binding: rest
+  confidence: high
+- tool: list_news_categories
+  category: content
+  rest: [getWpV2Categories]
+  binding: rest
+  confidence: high
+- tool: search_site
+  category: content
+  rest: [getWpV2Search]
+  binding: rest
+  confidence: high
+  note: >
+    /wp/v2/search returns typed cross-resource stubs (id, title, url, type, subtype), not full
+    objects — a follow-up get_news_item / get_page call is needed for the body.
+- tool: list_pages
+  category: content
+  rest: [getWpV2Pages]
+  binding: rest
+  confidence: high
+- tool: get_page
+  category: content
+  rest: [getWpV2PagesById]
+  binding: rest
+  confidence: high
+- tool: list_people
+  category: people
+  rest: [getWpV2Team]
+  binding: rest
+  confidence: high
+- tool: get_person
+  category: people
+  rest: [getWpV2TeamById]
+  binding: rest
+  confidence: high
+- tool: list_people_groups
+  category: people
+  rest: [getWpV2TeamCategories]
+  binding: rest
+  confidence: high
+- tool: list_media
+  category: content
+  rest: [getWpV2Media]
+  binding: rest
+  confidence: high
+- tool: list_jobs
+  category: careers
+  rest: [listJobs]
+  binding: rest
+  confidence: high
+- tool: get_job
+  category: careers
+  rest: [getJob]
+  binding: rest
+  confidence: high
+- tool: list_departments
+  category: careers
+  rest: [listDepartments]
+  binding: rest
+  confidence: high
+- tool: list_offices
+  category: careers
+  rest: [listOffices]
+  binding: rest
+  confidence: high
+mcp_only: []
+mcp_only_note: >
+  Empty by construction — the candidate tool list was derived FROM the REST surface, so no tool
+  can exist without a backing operation. A published LifeMine MCP server would be the thing that
+  could introduce composites; none exists.
+rest_only:
+- capability: WordPress content authoring
+  operations_approx: 139
+  examples: [createWpV2Posts, updateWpV2PostsById, deleteWpV2PostsById, createWpV2Media, patchWpV2PagesById]
+  reason: >
+    Write operations across posts, pages, media, blocks, templates, menus and taxonomies. Excluded
+    from the tool list because they require a WordPress credential that is not issued to the
+    public.
+- capability: Block editor and site-building internals
+  examples: [getWpV2BlockTypes, getWpV2Templates, getWpV2TemplateParts, getWpV2GlobalStylesById, getWpV2Widgets, getWpV2Navigation]
+  reason: Editor/theme plumbing with no agent-facing value against a marketing site.
+- capability: Site health diagnostics
+  examples: [getWpSiteHealthV1TestsHttpsStatus, getWpSiteHealthV1TestsLoopbackRequests, getWpSiteHealthV1DirectorySizes]
+  reason: Administrative diagnostics; auth-gated in practice.
+- capability: WordPress Abilities API
+  examples: [getWpAbilitiesV1Abilities, getWpAbilitiesV1Categories]
+  reason: >
+    Registered on the host and genuinely agent-oriented — a capability registry an agent could
+    discover and run — but returns 401 rest_forbidden anonymously, so nothing can be bound to it.
+    This is the single most interesting unrealised agent surface on this provider.
+- capability: Users, comments, statuses, oembed
+  examples: [getWpV2Users, getWpV2Comments, getWpV2Statuses, getOembed10Embed]
+  reason: Readable but editorially unused on this site; omitted to keep the tool set meaningful.
+- capability: Greenhouse education reference data
+  operations: [listEducationDegrees, listEducationDisciplines, listEducationSchools, getBoard, listSections, getSection, getDepartment, getOffice]
+  reason: >
+    Application-form picklists and singletons that are Greenhouse platform data rather than
+    LifeMine information.
+- capability: Third-party plugin admin namespaces
+  namespaces: [yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1]
+  reason: >
+    Real registered routes on the live host, but vendor control planes rather than LifeMine's
+    content surface. Excluded from openapi/lifemine-content-openapi.yml entirely; the complete
+    verbatim route index is preserved at openapi/_original/lifemine-wp-json-index.json.
+coverage:
+  tools_named: 14
+  tools_bound: 14
+  mcp_only: 0
+  rest_ops_total: 280
+  rest_ops_in_specs:
+    content: 268
+    careers: 12
+  rest_ops_with_a_tool: 14
+  rest_read_ops_with_a_tool_pct: ~11
+  note: >
+    Low coverage is the correct outcome, not a gap: 139 of the 268 content operations are
+    credentialed writes, and most of the remaining reads are block-editor and theme plumbing. The
+    14 tools cover essentially all of the publicly meaningful read surface — news, pages, people,
+    media, search, jobs, departments and offices.

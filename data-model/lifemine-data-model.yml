@@ -1,0 +1,262 @@
+generated: '2026-08-04'
+method: derived
+source:
+- json-schema/ (HTTP OPTIONS documents harvested from https://lifeminetx.com/wp-json/wp/v2/*)
+- https://lifeminetx.com/wp-json/wp/v2/types
+- https://lifeminetx.com/wp-json/wp/v2/taxonomies
+- openapi/lifemine-careers-openapi.yml
+description: >
+  Entity-relationship graph across LifeMine's two public API surfaces. Derived from the hosts' own
+  type registry, taxonomy registry and per-resource JSON Schemas — every entity, field and
+  cardinality below was read out of a fetched document, not modelled by hand.
+surfaces:
+- key: content
+  base_url: https://lifeminetx.com/wp-json/wp/v2
+  entities: [post, page, attachment, team, category, tag, team_categories, user, comment]
+- key: careers
+  base_url: https://boards-api.greenhouse.io/v1/boards/lifeminetx
+  entities: [board, job, department, office, section]
+
+entities:
+- name: post
+  surface: content
+  rest_base: posts
+  label: Posts
+  hierarchical: false
+  count_observed: 24
+  id_type: integer
+  schema: json-schema/lifemine-posts-schema.json
+  properties_count: 28
+  domain: >
+    LifeMine's news stream. Categorised into press-releases (9), in-the-news (13),
+    publications (1) and expedition-academy (1) — so a single collection carries corporate
+    announcements, earned media, peer-reviewed science and internal thought leadership.
+  key_fields: [id, date, date_gmt, modified, slug, link, title, content, excerpt, author, featured_media, categories, tags, status, type]
+- name: page
+  surface: content
+  rest_base: pages
+  label: Pages
+  hierarchical: true
+  count_observed: 9
+  id_type: integer
+  schema: json-schema/lifemine-pages-schema.json
+  properties_count: 26
+  domain: >
+    The site's static structure: home (37), about (30), science (47), pipeline (49),
+    culture-careers (51), news (53), blog (39), contact (271), privacy-policy (3).
+  key_fields: [id, slug, link, title, content, parent, menu_order, template, status]
+- name: attachment
+  surface: content
+  rest_base: media
+  label: Media
+  hierarchical: false
+  count_observed: 117
+  id_type: integer
+  schema: json-schema/lifemine-media-schema.json
+  properties_count: 33
+  domain: Images and documents — team headshots, logos, and press assets.
+  key_fields: [id, slug, link, title, media_type, mime_type, source_url, media_details, post, alt_text]
+- name: team
+  surface: content
+  rest_base: team
+  label: Teams
+  hierarchical: false
+  count_observed: 15
+  id_type: integer
+  schema: json-schema/lifemine-team-schema.json
+  properties_count: 20
+  custom_post_type: true
+  domain: >
+    The one bespoke entity on this site — a custom post type for people, not part of WordPress
+    core. Carries LifeMine's leadership, founders and board as structured, machine-readable
+    records rather than as HTML on a page.
+  key_fields: [id, slug, link, title, content, featured_media, team_categories, status, type]
+- name: team_categories
+  surface: content
+  rest_base: team_categories
+  label: Team Categories
+  taxonomy: true
+  hierarchical: true
+  count_observed: 3
+  schema: json-schema/lifemine-team_categories-schema.json
+  terms_observed:
+  - slug: leadership
+    count: 10
+  - slug: founders
+    count: 3
+  - slug: board-of-directors
+    count: 7
+  note: Counts sum above 15 because a person can hold more than one term (founders also sit in leadership/board).
+  key_fields: [id, name, slug, parent, count, description]
+- name: category
+  surface: content
+  rest_base: categories
+  label: Categories
+  taxonomy: true
+  hierarchical: true
+  count_observed: 4
+  schema: json-schema/lifemine-categories-schema.json
+  terms_observed:
+  - slug: in-the-news
+    count: 13
+  - slug: press-releases
+    count: 9
+  - slug: publications
+    count: 1
+  - slug: expedition-academy
+    count: 1
+  key_fields: [id, name, slug, parent, count, description, link]
+- name: tag
+  surface: content
+  rest_base: tags
+  label: Tags
+  taxonomy: true
+  hierarchical: false
+  schema: json-schema/lifemine-tags-schema.json
+  key_fields: [id, name, slug, count, description, link]
+- name: user
+  surface: content
+  rest_base: users
+  label: Users
+  note: Registered and publicly readable (default WordPress author surface). Exposes public author profiles only.
+  key_fields: [id, name, slug, link, avatar_urls]
+- name: comment
+  surface: content
+  rest_base: comments
+  label: Comments
+  note: Route registered by WordPress core; no comment surface is used editorially on this site.
+- name: board
+  surface: careers
+  label: Job Board
+  singleton: true
+  key_fields: [name, content]
+- name: job
+  surface: careers
+  label: Job
+  count_observed: 2
+  id_type: integer (int64)
+  key_fields: [id, internal_job_id, title, absolute_url, location, departments, offices, questions, data_compliance, first_published, updated_at, requisition_id]
+- name: department
+  surface: careers
+  label: Department
+  hierarchical: true
+  count_observed: 32
+  key_fields: [id, name, parent_id, child_ids, children, jobs]
+- name: office
+  surface: careers
+  label: Office
+  count_observed: 3
+  terms_observed: [Basel CH, Gloucester MA, Watertown MA]
+  key_fields: [id, name, location, parent_id, child_ids, departments]
+- name: section
+  surface: careers
+  label: Section
+  count_observed: 0
+  note: Registered but empty on this board.
+
+relationships:
+- from: post
+  to: category
+  type: has_many
+  via: categories
+  evidence: json-schema/lifemine-posts-schema.json properties.categories (array of term ids)
+- from: post
+  to: tag
+  type: has_many
+  via: tags
+  evidence: json-schema/lifemine-posts-schema.json properties.tags
+- from: post
+  to: user
+  type: belongs_to
+  via: author
+  evidence: json-schema/lifemine-posts-schema.json properties.author
+- from: post
+  to: attachment
+  type: has_one
+  via: featured_media
+  evidence: json-schema/lifemine-posts-schema.json properties.featured_media
+- from: post
+  to: comment
+  type: has_many
+  via: _links.replies
+  evidence: WordPress `replies` link relation
+- from: page
+  to: page
+  type: belongs_to
+  via: parent
+  evidence: json-schema/lifemine-pages-schema.json properties.parent (hierarchical post type)
+- from: page
+  to: attachment
+  type: has_one
+  via: featured_media
+  evidence: json-schema/lifemine-pages-schema.json properties.featured_media
+- from: team
+  to: team_categories
+  type: has_many
+  via: team_categories
+  evidence: /wp/v2/types -> team.taxonomies = [team_categories]
+- from: team
+  to: attachment
+  type: has_one
+  via: featured_media
+  evidence: json-schema/lifemine-team-schema.json properties.featured_media
+- from: attachment
+  to: post
+  type: belongs_to
+  via: post
+  evidence: json-schema/lifemine-media-schema.json properties.post (parent attachment id)
+- from: category
+  to: category
+  type: belongs_to
+  via: parent
+  evidence: /wp/v2/taxonomies -> category.hierarchical = true
+- from: team_categories
+  to: team_categories
+  type: belongs_to
+  via: parent
+  evidence: /wp/v2/taxonomies -> team_categories.hierarchical = true
+- from: job
+  to: department
+  type: has_many
+  via: departments
+  evidence: live /jobs/{id} payload
+- from: job
+  to: office
+  type: has_many
+  via: offices
+  evidence: live /jobs/{id} payload
+- from: department
+  to: department
+  type: belongs_to
+  via: parent_id
+  evidence: live /departments payload (parent_id + child_ids, render_as=tree)
+- from: department
+  to: job
+  type: has_many
+  via: jobs
+  evidence: live /departments payload
+- from: office
+  to: department
+  type: has_many
+  via: departments
+  evidence: live /offices payload
+- from: office
+  to: office
+  type: belongs_to
+  via: parent_id
+  evidence: live /offices payload
+
+cross_surface_note: >
+  The two surfaces do not join. There is no shared identifier between a WordPress `team` record
+  and a Greenhouse `job`, and no LifeMine-side entity links them. `office` (Basel CH, Gloucester
+  MA, Watertown MA) and the site's stated locations overlap semantically only.
+
+id_conventions:
+  content: Sequential WordPress integer ids; slugs are stable, human-readable and used in public URLs.
+  careers: Greenhouse int64 ids (e.g. 8587930002); `internal_job_id` is a separate id from the board `id`.
+
+cross_links:
+  conventions: conventions/lifemine-conventions.yml
+  openapi:
+  - openapi/lifemine-content-openapi.yml
+  - openapi/lifemine-careers-openapi.yml

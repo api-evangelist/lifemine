@@ -1,18 +1,93 @@
 aid: lifemine
 name: LifeMine
-description: 'LifeMine is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  LifeMine (LifeMine Therapeutics) is a clinical-stage biopharmaceutical company pioneering
+  Top-Down Drug Discovery, mining the fungal biosphere for genetically encoded small molecules and
+  developing them into precision medicines for immune-mediated disease and organ transplant
+  rejection. Founded in 2017 by Gregory Verdine, Richard Klausner and WeiQing Zhou, the company is
+  headquartered in Watertown, Massachusetts with sites in Gloucester, Massachusetts and Basel,
+  Switzerland, and has raised more than $320 million. Its lead programme, LIFE-001, is a
+  structurally novel calcineurin inhibitor that entered a first-in-human Phase 1 trial in April
+  2025. LifeMine publishes no developer portal and no API documentation, and its drug-discovery
+  platform is not exposed publicly. It does, however, operate two genuinely public, anonymous,
+  machine-readable read APIs as byproducts of the platforms it runs: a WordPress REST API serving
+  its news, pages, media and a structured leadership/board record set, and a Greenhouse job board
+  API serving its open roles, departments and offices.
+image: https://lifeminetx.com/wp-content/uploads/2024/05/cropped-Favicon-B.png
 url: https://raw.githubusercontent.com/api-evangelist/lifemine/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: enriched
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Biotechnology
+- Pharmaceuticals
+- Drug Discovery
+- Life Sciences
+- Clinical Trials
+- Genomics
+- Content
+- Careers
+- WordPress
+apis:
+- aid: lifemine:content
+  name: LifeMine Website Content API
+  description: >-
+    Anonymous read API over LifeMine's corporate site content, served by WordPress at
+    https://lifeminetx.com/wp-json. Carries 24 news items (press releases, publications,
+    in-the-news coverage and thought leadership), 9 static pages, 117 media assets, and a `team`
+    custom post type holding 15 structured leadership, founder and board-of-directors records with
+    biographies and headshots. 203 routes are registered across 10 namespaces. Reads require no
+    credentials; writes require a WordPress credential that is not issued to the public. Resources
+    self-describe via HTTP OPTIONS, which returns real JSON Schema per collection. This is a
+    site-content API, not a scientific or clinical one.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - Content
+  - News
+  - People
+  - Media
+  - WordPress
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-content-openapi.yml
+  - type: Overlay
+    url: overlays/lifemine-content-overlay.yaml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+- aid: lifemine:careers
+  name: LifeMine Careers API
+  description: >-
+    Anonymous read API over LifeMine's open roles, hiring departments and offices, served by
+    Greenhouse under the board token `lifeminetx`. Every GET is public and unauthenticated.
+    Returns full HTML job descriptions on request, application-form questions, per-role GDPR
+    data-compliance blocks, and AI-disclosure fields including an applicant opt-out URL. Two open
+    roles, 32 departments and three offices (Basel CH, Gloucester MA, Watertown MA) were observed
+    on 2026-08-04. The host is Greenhouse's; the board content is LifeMine's.
+  humanURL: https://job-boards.greenhouse.io/lifeminetx
+  baseURL: https://boards-api.greenhouse.io/v1/boards/lifeminetx
+  tags:
+  - Careers
+  - Jobs
+  - Hiring
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-careers-openapi.yml
+  - type: Overlay
+    url: overlays/lifemine-careers-overlay.yaml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +95,85 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://lifeminetx.com/
+- type: About
+  url: https://lifeminetx.com/about/
+- type: Science
+  url: https://lifeminetx.com/science/
+- type: Pipeline
+  url: https://lifeminetx.com/pipeline/
+- type: Blog
+  url: https://lifeminetx.com/blog/
+- type: News
+  url: https://lifeminetx.com/news/
+- type: BlogRSS
+  url: https://lifeminetx.com/feed/
+- type: Support
+  url: https://lifeminetx.com/contact/
+- type: Careers
+  url: https://lifeminetx.com/culture-careers/
+- type: PrivacyPolicy
+  url: https://lifeminetx.com/privacy-policy/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/lifemine-therapeutics
+- type: SecondaryMarket
+  name: Forge Global
   url: https://forgeglobal.com/lifemine_stock/
+- type: Authentication
+  url: authentication/lifemine-authentication.yml
+- type: Conventions
+  url: conventions/lifemine-conventions.yml
+- type: ErrorCatalog
+  url: errors/lifemine-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/lifemine-lifecycle.yml
+- type: Conformance
+  url: conformance/lifemine-conformance.yml
+- type: DataModel
+  url: data-model/lifemine-data-model.yml
+- type: WellKnown
+  url: well-known/lifemine-well-known.yml
+- type: DomainSecurity
+  url: security/lifemine-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/lifemine-agentic-access.yml
+- type: MCPServer
+  url: mcp/lifemine-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/lifemine-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/lifemine-llms.txt
+x-enrichment-notes:
+  no_fabrication_record: >-
+    The following canonical pointers are deliberately ABSENT because the underlying thing does not
+    exist, and each absence was verified rather than assumed: AgentCard (both
+    /.well-known/agent-card.json and /.well-known/agent.json returned 404); SecurityTxt and
+    Security (/.well-known/security.txt returned 404, no disclosure page or bug bounty found);
+    Compliance and TrustCenter (no trust centre, no published certifications); SDKs and Packages
+    (no first-party client library in any registry); StatusPage and Deprecation (no status page,
+    no deprecation policy, no Sunset headers); Idempotency (no idempotency key anywhere in the 203
+    registered routes or the Greenhouse surface); AsyncAPI and Webhooks (no event or webhook
+    surface); OAuthScopes (no OAuth); RateLimits (no published limits, no rate-limit headers);
+    ChangeLog, CLI, Sandbox and Components (none published); DeclineCodes (not a payments
+    provider); Documentation, APIReference, GettingStarted and DeveloperPortal (LifeMine publishes
+    no API documentation of any kind — pointing these at the upstream WordPress or Greenhouse
+    handbooks would credit LifeMine for someone else's work); TermsOfService (/terms/ and
+    /terms-of-use/ both 404); GitHubOrganization (github.com/LifeMine resolves but is empty,
+    undescribed and unverifiable as this company); Postman, Pricing and SignUp (not applicable to
+    a biotech with no API product).
+  spec_provenance: >-
+    Neither OpenAPI in this repo was published by LifeMine. Both were derived by API Evangelist
+    from documents fetched from the live hosts — the WordPress self-describing route index plus
+    per-resource HTTP OPTIONS schemas, and the Greenhouse Job Board API documentation plus live
+    payloads from LifeMine's own board. The unmodified WordPress route index is preserved at
+    openapi/_original/lifemine-wp-json-index.json.
+  graphql_gated: >-
+    A live WPGraphQL endpoint exists at https://lifeminetx.com/graphql but public introspection is
+    disabled. No SDL was captured and none was synthesized.
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 37
+  pass: local-v1

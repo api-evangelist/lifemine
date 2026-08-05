@@ -1,0 +1,65 @@
+generated: '2026-08-04'
+method: probed
+source: live GET of /.well-known/* on every host in apis.yml
+description: >
+  Well-known discovery probe across LifeMine's hosts. Every path below was fetched anonymously on
+  2026-08-04 and its observed HTTP status recorded. LifeMine publishes NO /.well-known/ documents:
+  the WordPress site answers /.well-known/* with its themed 404 page (HTML, status 404), and the
+  Greenhouse-hosted careers board is a third-party host so its well-known surface is not LifeMine's
+  to publish. Absence here is real recorded data, not a gap in the probe.
+hosts:
+- host: https://lifeminetx.com
+  role: website + WordPress REST API
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    note: RFC 9116 — nginx default 404 (not the themed WordPress 404), so nothing is served here.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    note: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    note: RFC 9728
+  - path: /.well-known/api-catalog
+    status: 404
+    note: RFC 9727
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+    note: A2A 1.0.0 canonical path — no agent card published.
+  - path: /.well-known/agent.json
+    status: 404
+    note: Pre-0.3 A2A legacy path — also absent.
+  - path: /llms.txt
+    status: 404
+    note: No provider-published llms.txt; a generated one is at llms/lifemine-llms.txt.
+  other_discovery:
+  - path: /robots.txt
+    status: 200
+    note: 'Yoast-generated. `User-agent: * / Disallow:` — nothing disallowed, all agents permitted.
+      Crawl-delay: 10. Declares Sitemap: https://lifeminetx.com/sitemap_index.xml.'
+  - path: /sitemap.xml
+    status: 200
+    note: Yoast sitemap index.
+  - path: /feed/
+    status: 200
+    note: RSS 2.0 feed of press releases, publications and in-the-news items.
+  - path: /wp-json/
+    status: 200
+    note: >
+      WordPress REST API discovery document — the real machine-readable contract on this host.
+      203 registered routes across 10 namespaces. Saved verbatim to
+      openapi/_original/lifemine-wp-json-index.json and converted to
+      openapi/lifemine-content-openapi.yml.
+  - path: /graphql
+    status: 200
+    note: WPGraphQL endpoint. Live, but public introspection is disabled. See graphql/lifemine-graphql.yml.
+- host: https://boards-api.greenhouse.io
+  role: careers API (third-party host, board token lifeminetx)
+  note: >
+    Greenhouse's host, not LifeMine's. Not probed for /.well-known/ documents because anything
+    found there would describe Greenhouse Software, not LifeMine.
+security_txt: none
