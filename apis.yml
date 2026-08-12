@@ -34,30 +34,16 @@ tags:
 - Careers
 - WordPress
 apis:
-- aid: lifemine:content
-  name: LifeMine Website Content API
-  description: >-
-    Anonymous read API over LifeMine's corporate site content, served by WordPress at
-    https://lifeminetx.com/wp-json. Carries 24 news items (press releases, publications,
-    in-the-news coverage and thought leadership), 9 static pages, 117 media assets, and a `team`
-    custom post type holding 15 structured leadership, founder and board-of-directors records with
-    biographies and headshots. 203 routes are registered across 10 namespaces. Reads require no
-    credentials; writes require a WordPress credential that is not issued to the public. Resources
-    self-describe via HTTP OPTIONS, which returns real JSON Schema per collection. This is a
-    site-content API, not a scientific or clinical one.
+- aid: lifemine:lifemine-abilities-api
+  name: LifeMine Abilities API
+  description: The abilities API from LifeMine — 3 operation(s) for abilities.
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - Content
-  - News
-  - People
-  - Media
-  - WordPress
+  - abilities
   properties:
   - type: OpenAPI
-    url: openapi/lifemine-content-openapi.yml
-  - type: Overlay
-    url: overlays/lifemine-content-overlay.yaml
+    url: openapi/lifemine-abilities-api-openapi.yml
   - type: JSONSchema
     url: json-schema/lifemine-posts-schema.json
   - type: JSONSchema
@@ -66,26 +52,1146 @@ apis:
     url: examples/lifemine-posts-example.json
   - type: GraphQL
     url: graphql/lifemine-graphql.yml
-- aid: lifemine:careers
-  name: LifeMine Careers API
-  description: >-
-    Anonymous read API over LifeMine's open roles, hiring departments and offices, served by
-    Greenhouse under the board token `lifeminetx`. Every GET is public and unauthenticated.
-    Returns full HTML job descriptions on request, application-form questions, per-role GDPR
-    data-compliance blocks, and AI-disclosure fields including an applicant opt-out URL. Two open
-    roles, 32 departments and three offices (Basel CH, Gloucester MA, Watertown MA) were observed
-    on 2026-08-04. The host is Greenhouse's; the board content is LifeMine's.
-  humanURL: https://job-boards.greenhouse.io/lifeminetx
-  baseURL: https://boards-api.greenhouse.io/v1/boards/lifeminetx
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-block-directory-api
+  name: LifeMine Block Directory API
+  description: The block-directory API from LifeMine — 1 operation(s) for block-directory.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
   tags:
-  - Careers
-  - Jobs
-  - Hiring
+  - block-directory
   properties:
   - type: OpenAPI
-    url: openapi/lifemine-careers-openapi.yml
-  - type: Overlay
-    url: overlays/lifemine-careers-overlay.yaml
+    url: openapi/lifemine-block-directory-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-block-patterns-api
+  name: LifeMine Block Patterns API
+  description: The block-patterns API from LifeMine — 2 operation(s) for block-patterns.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - block-patterns
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-block-patterns-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-block-renderer-api
+  name: LifeMine Block Renderer API
+  description: The block-renderer API from LifeMine — 1 operation(s) for block-renderer.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - block-renderer
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-block-renderer-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-block-types-api
+  name: LifeMine Block Types API
+  description: The block-types API from LifeMine — 3 operation(s) for block-types.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - block-types
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-block-types-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-blocks-api
+  name: LifeMine Blocks API
+  description: The blocks API from LifeMine — 6 operation(s) for blocks.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-blocks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-board-api
+  name: LifeMine Board API
+  description: Board-level metadata.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - board
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-board-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-categories-api
+  name: LifeMine Categories API
+  description: The categories API from LifeMine — 4 operation(s) for categories.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-categories-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-comments-api
+  name: LifeMine Comments API
+  description: The comments API from LifeMine — 2 operation(s) for comments.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - comments
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-comments-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-customgf-v2-api
+  name: LifeMine Customgf/v2 API
+  description: The customgf/v2 API from LifeMine — 1 operation(s) for customgf/v2.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - customgf/v2
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-customgf-v2-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-departments-api
+  name: LifeMine Departments API
+  description: Department taxonomy.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - departments
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-departments-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-directory-sizes-api
+  name: LifeMine Directory Sizes API
+  description: The directory-sizes API from LifeMine — 1 operation(s) for directory-sizes.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - directory-sizes
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-directory-sizes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-education-api
+  name: LifeMine Education API
+  description: Greenhouse education reference data used by application forms.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - education
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-education-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-embed-api
+  name: LifeMine Embed API
+  description: The embed API from LifeMine — 1 operation(s) for embed.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - embed
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-embed-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-export-api
+  name: LifeMine Export API
+  description: The export API from LifeMine — 1 operation(s) for export.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - export
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-export-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-font-collections-api
+  name: LifeMine Font Collections API
+  description: The font-collections API from LifeMine — 2 operation(s) for font-collections.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - font-collections
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-font-collections-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-font-families-api
+  name: LifeMine Font Families API
+  description: The font-families API from LifeMine — 4 operation(s) for font-families.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - font-families
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-font-families-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-forms-api
+  name: LifeMine Forms API
+  description: The forms API from LifeMine — 1 operation(s) for forms.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - forms
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-forms-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-global-styles-api
+  name: LifeMine Global Styles API
+  description: The global-styles API from LifeMine — 5 operation(s) for global-styles.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - global-styles
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-global-styles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-icons-api
+  name: LifeMine Icons API
+  description: The icons API from LifeMine — 2 operation(s) for icons.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - icons
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-icons-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-jobs-api
+  name: LifeMine Jobs API
+  description: Open roles.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-jobs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-media-api
+  name: LifeMine Media API
+  description: The media API from LifeMine — 4 operation(s) for media.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - media
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-media-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-menu-items-api
+  name: LifeMine Menu Items API
+  description: The menu-items API from LifeMine — 4 operation(s) for menu-items.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - menu-items
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-menu-items-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-menu-locations-api
+  name: LifeMine Menu Locations API
+  description: The menu-locations API from LifeMine — 2 operation(s) for menu-locations.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - menu-locations
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-menu-locations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-menus-api
+  name: LifeMine Menus API
+  description: The menus API from LifeMine — 2 operation(s) for menus.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - menus
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-menus-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-navigation-api
+  name: LifeMine Navigation API
+  description: The navigation API from LifeMine — 6 operation(s) for navigation.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - navigation
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-navigation-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-navigation-fallback-api
+  name: LifeMine Navigation Fallback API
+  description: The navigation-fallback API from LifeMine — 1 operation(s) for navigation-fallback.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - navigation-fallback
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-navigation-fallback-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-oembed-1-0-api
+  name: LifeMine Oembed/1.0 API
+  description: The oembed/1.0 API from LifeMine — 1 operation(s) for oembed/1.0.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - oembed/1.0
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-oembed-1-0-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-offices-api
+  name: LifeMine Offices API
+  description: Office / location taxonomy.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - offices
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-offices-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-pages-api
+  name: LifeMine Pages API
+  description: The pages API from LifeMine — 6 operation(s) for pages.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - pages
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-pages-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-pattern-directory-api
+  name: LifeMine Pattern Directory API
+  description: The pattern-directory API from LifeMine — 1 operation(s) for pattern-directory.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - pattern-directory
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-pattern-directory-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-plugins-api
+  name: LifeMine Plugins API
+  description: The plugins API from LifeMine — 2 operation(s) for plugins.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-plugins-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-posts-api
+  name: LifeMine Posts API
+  description: The posts API from LifeMine — 6 operation(s) for posts.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - posts
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-posts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-proxy-api
+  name: LifeMine Proxy API
+  description: The proxy API from LifeMine — 1 operation(s) for proxy.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - proxy
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-proxy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-root-api
+  name: LifeMine Root API
+  description: The root API from LifeMine — 1 operation(s) for root.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - root
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-root-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-search-api
+  name: LifeMine Search API
+  description: The search API from LifeMine — 1 operation(s) for search.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-search-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-sections-api
+  name: LifeMine Sections API
+  description: Board sections (empty on this board).
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - sections
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-sections-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-settings-api
+  name: LifeMine Settings API
+  description: The settings API from LifeMine — 1 operation(s) for settings.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - settings
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-settings-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-sidebars-api
+  name: LifeMine Sidebars API
+  description: The sidebars API from LifeMine — 2 operation(s) for sidebars.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - sidebars
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-sidebars-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-statuses-api
+  name: LifeMine Statuses API
+  description: The statuses API from LifeMine — 2 operation(s) for statuses.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-statuses-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-tags-api
+  name: LifeMine Tags API
+  description: The tags API from LifeMine — 2 operation(s) for tags.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-tags-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-taxonomies-api
+  name: LifeMine Taxonomies API
+  description: The taxonomies API from LifeMine — 2 operation(s) for taxonomies.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - taxonomies
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-taxonomies-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-team-api
+  name: LifeMine Team API
+  description: The team API from LifeMine — 2 operation(s) for team.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - team
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-team-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-team-categories-api
+  name: LifeMine Team Categories API
+  description: The team_categories API from LifeMine — 2 operation(s) for team_categories.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - team_categories
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-team-categories-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-template-parts-api
+  name: LifeMine Template Parts API
+  description: The template-parts API from LifeMine — 7 operation(s) for template-parts.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - template-parts
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-template-parts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-templates-api
+  name: LifeMine Templates API
+  description: The templates API from LifeMine — 7 operation(s) for templates.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - templates
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-templates-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-tests-api
+  name: LifeMine Tests API
+  description: The tests API from LifeMine — 6 operation(s) for tests.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - tests
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-tests-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-themes-api
+  name: LifeMine Themes API
+  description: The themes API from LifeMine — 2 operation(s) for themes.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - themes
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-themes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-types-api
+  name: LifeMine Types API
+  description: The types API from LifeMine — 2 operation(s) for types.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - types
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-types-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-url-details-api
+  name: LifeMine URL Details API
+  description: The url-details API from LifeMine — 1 operation(s) for url-details.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - url-details
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-url-details-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-users-api
+  name: LifeMine Users API
+  description: The users API from LifeMine — 6 operation(s) for users.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-users-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-widget-types-api
+  name: LifeMine Widget Types API
+  description: The widget-types API from LifeMine — 4 operation(s) for widget-types.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - widget-types
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-widget-types-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-widgets-api
+  name: LifeMine Widgets API
+  description: The widgets API from LifeMine — 2 operation(s) for widgets.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-widgets-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-wp-abilities-v1-api
+  name: LifeMine Wp Abilities/v1 API
+  description: The wp-abilities/v1 API from LifeMine — 1 operation(s) for wp-abilities/v1.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - wp-abilities/v1
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-wp-abilities-v1-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-wp-block-editor-v1-api
+  name: LifeMine Wp Block Editor/v1 API
+  description: The wp-block-editor/v1 API from LifeMine — 1 operation(s) for wp-block-editor/v1.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - wp-block-editor/v1
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-wp-block-editor-v1-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-wp-pattern-category-api
+  name: LifeMine Wp Pattern Category API
+  description: The wp_pattern_category API from LifeMine — 2 operation(s) for wp_pattern_category.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - wp_pattern_category
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-wp-pattern-category-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-wp-site-health-v1-api
+  name: LifeMine Wp Site Health/v1 API
+  description: The wp-site-health/v1 API from LifeMine — 1 operation(s) for wp-site-health/v1.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - wp-site-health/v1
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-wp-site-health-v1-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
+  - type: Examples
+    url: examples/lifemine-careers-jobs-example.json
+- aid: lifemine:lifemine-wp-v2-api
+  name: LifeMine Wp/v2 API
+  description: The wp/v2 API from LifeMine — 1 operation(s) for wp/v2.
+  humanURL: https://lifeminetx.com/
+  baseURL: https://lifeminetx.com/wp-json
+  tags:
+  - wp/v2
+  properties:
+  - type: OpenAPI
+    url: openapi/lifemine-wp-v2-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/lifemine-posts-schema.json
+  - type: JSONSchema
+    url: json-schema/lifemine-team-schema.json
+  - type: Examples
+    url: examples/lifemine-posts-example.json
+  - type: GraphQL
+    url: graphql/lifemine-graphql.yml
   - type: Examples
     url: examples/lifemine-careers-jobs-example.json
 maintainers:
@@ -94,6 +1200,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/lifemine-careers-overlay.yaml
 - type: Website
   url: https://lifeminetx.com/
 - type: About
