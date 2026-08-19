@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Embed API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "embed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /oembed/1.0/embed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/oembed/1.0/embed",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "The URL of the resource for which to fetch oEmbed data."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxwidth",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /oembed/1.0/embed"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

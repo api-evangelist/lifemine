@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Abilities API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "abilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp-abilities/v1/abilities/{name}/run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities/:name/run",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `name` (WordPress route pattern)."
+              },
+              {
+                "name": "input",
+                "value": "",
+                "type": "query",
+                "description": "Input parameters for the ability execution."
+              }
+            ]
+          },
+          "docs": "GET /wp-abilities/v1/abilities/{name}/run"
+        },
+        {
+          "info": {
+            "name": "POST /wp-abilities/v1/abilities/{name}/run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities/:name/run",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `name` (WordPress route pattern)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp-abilities/v1/abilities/{name}/run"
+        },
+        {
+          "info": {
+            "name": "PUT /wp-abilities/v1/abilities/{name}/run",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities/:name/run",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `name` (WordPress route pattern)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PUT /wp-abilities/v1/abilities/{name}/run"
+        },
+        {
+          "info": {
+            "name": "PATCH /wp-abilities/v1/abilities/{name}/run",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities/:name/run",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `name` (WordPress route pattern)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PATCH /wp-abilities/v1/abilities/{name}/run"
+        },
+        {
+          "info": {
+            "name": "DELETE /wp-abilities/v1/abilities/{name}/run",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities/:name/run",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `name` (WordPress route pattern)."
+              },
+              {
+                "name": "input",
+                "value": "",
+                "type": "query",
+                "description": "Input parameters for the ability execution."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "DELETE /wp-abilities/v1/abilities/{name}/run"
+        },
+        {
+          "info": {
+            "name": "GET /wp-abilities/v1/abilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to abilities in specific ability category."
+              }
+            ]
+          },
+          "docs": "GET /wp-abilities/v1/abilities"
+        },
+        {
+          "info": {
+            "name": "GET /wp-abilities/v1/abilities/{name}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-abilities/v1/abilities/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `name` (WordPress route pattern)."
+              }
+            ]
+          },
+          "docs": "GET /wp-abilities/v1/abilities/{name}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

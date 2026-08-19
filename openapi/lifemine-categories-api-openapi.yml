@@ -1,0 +1,709 @@
+openapi: 3.2.0
+info:
+  title: LifeMine Website Content API (WordPress REST) Categories API
+  version: wp/v2
+  summary: Anonymous read API over LifeMine's corporate site content.
+  description: 'LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/. This document was DERIVED mechanically from that host''s own self-describing route index plus the per-resource JSON Schemas returned by HTTP OPTIONS on each collection - no path, parameter, type, default, enum or description here was authored by API Evangelist.
+
+
+    This is a site-content API, not a scientific/drug-discovery product API: it serves press releases and publications (`posts`, 24 items), site pages, media (117 items), the leadership/team custom post type (`team`, 15 items) and its taxonomy, plus categories and tags. Read operations require no credentials; write operations require WordPress authentication (application password or cookie+nonce) and are not available to the public.
+
+
+    Scope note: the live host also registers third-party plugin ADMIN namespaces (yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1). Those are real but are vendor control planes rather than LifeMine''s content surface, so they are excluded from this document and recorded in conventions/lifemine-conventions.yml. The complete verbatim route index is preserved at openapi/_original/lifemine-wp-json-index.json.'
+  contact:
+    name: LifeMine
+    url: https://lifeminetx.com/contact/
+  x-derived-from: https://lifeminetx.com/wp-json/
+  x-derived-on: '2026-08-04'
+  x-derived-by: API Evangelist enrichment pipeline (0-working/pipeline-enrich.md)
+  x-not-a-provider-published-spec: true
+servers:
+- url: https://lifeminetx.com/wp-json
+  description: Production
+security: []
+tags:
+- name: categories
+paths:
+  /wp/v2/categories:
+    get:
+      operationId: getWpV2Categories
+      summary: GET /wp/v2/categories
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/category'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by term attribute.
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - slug
+          - include_slugs
+          - term_group
+          - description
+          - count
+          default: name
+      - name: hide_empty
+        in: query
+        required: false
+        description: Whether to hide terms not assigned to any posts.
+        schema:
+          type: boolean
+          default: false
+      - name: parent
+        in: query
+        required: false
+        description: Limit result set to terms assigned to a specific parent.
+        schema:
+          type: integer
+      - name: post
+        in: query
+        required: false
+        description: Limit result set to terms assigned to a specific post.
+        schema:
+          type: integer
+      - name: slug
+        in: query
+        required: false
+        description: Limit result set to terms with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+    post:
+      operationId: createWpV2Categories
+      summary: POST /wp/v2/categories
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/category'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+              required:
+              - name
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/categories/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2CategoriesById
+      summary: GET /wp/v2/categories/{id}
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+    post:
+      operationId: createWpV2CategoriesById
+      summary: POST /wp/v2/categories/{id}
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    put:
+      operationId: updateWpV2CategoriesById
+      summary: PUT /wp/v2/categories/{id}
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    patch:
+      operationId: patchWpV2CategoriesById
+      summary: PATCH /wp/v2/categories/{id}
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    delete:
+      operationId: deleteWpV2CategoriesById
+      summary: DELETE /wp/v2/categories/{id}
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        description: Required to be true, as terms do not support trashing.
+        schema:
+          type: boolean
+          default: false
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp-abilities/v1/categories:
+    get:
+      operationId: getWpAbilitiesV1Categories
+      summary: GET /wp-abilities/v1/categories
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 50
+  /wp-abilities/v1/categories/{slug}:
+    parameters:
+    - name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `slug` (WordPress route pattern).
+    get:
+      operationId: getWpAbilitiesV1CategoriesBySlug
+      summary: GET /wp-abilities/v1/categories/{slug}
+      tags:
+      - categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
+    category:
+      title: category
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the term.
+          type: integer
+          context:
+          - view
+          - embed
+          - edit
+          readonly: true
+        count:
+          description: Number of published posts for the term.
+          type: integer
+          context:
+          - view
+          - edit
+          readonly: true
+        description:
+          description: HTML description of the term.
+          type: string
+          context:
+          - view
+          - edit
+        link:
+          description: URL of the term.
+          type: string
+          format: uri
+          context:
+          - view
+          - embed
+          - edit
+          readonly: true
+        name:
+          description: HTML title for the term.
+          type: string
+          context:
+          - view
+          - embed
+          - edit
+          required: true
+        slug:
+          description: An alphanumeric identifier for the term unique to its type.
+          type: string
+          context:
+          - view
+          - embed
+          - edit
+        taxonomy:
+          description: Type attribution for the term.
+          type: string
+          enum:
+          - category
+          context:
+          - view
+          - embed
+          - edit
+          readonly: true
+        parent:
+          description: The parent term ID.
+          type: integer
+          context:
+          - view
+          - edit
+        meta:
+          description: Meta fields.
+          type: object
+          context:
+          - view
+          - edit
+          properties: []
+        acf:
+          description: ACF field data
+          type: object
+          properties:
+            category_color:
+              type:
+              - string
+              - array
+              - int
+              - 'null'
+              required: false
+              items:
+                type:
+                - string
+                - int
+                enum:
+                - btt
+                - tty
+                - yto
+              minItems: 1
+              maxItems: 1
+              default: btt
+            btn_text:
+              type:
+              - string
+              - 'null'
+              required: false
+              default: Read more
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (RFC 7617 Basic). Route /wp/v2/users/{user_id}/application-passwords is registered on this host. Write access only; not issued to the public.
+    cookieNonce:
+      type: apiKey
+      in: header
+      name: X-WP-Nonce
+      description: WordPress cookie authentication with an X-WP-Nonce header (first-party browser context only). Advertised in Access-Control-Allow-Headers on this host.
+externalDocs:
+  description: WordPress REST API Handbook (the upstream specification this host implements)
+  url: https://developer.wordpress.org/rest-api/

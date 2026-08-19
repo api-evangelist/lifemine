@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "b4cc83f6-115c-407d-ab65-7c9745ce8339",
+      "name": "offices",
+      "description": {
+        "content": "Office / location taxonomy.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8fd8270-ae24-41a7-86a6-1d701f44397b",
+          "name": "List offices",
+          "request": {
+            "name": "List offices",
+            "description": {
+              "content": "The office taxonomy with each office's departments. Three observed on 2026-08-04: Basel CH, Gloucester MA, Watertown MA.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "render_as",
+                  "value": "list",
+                  "description": "Return the taxonomy flat (`list`) or nested (`tree`)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7fc22ed-aeb1-4937-aa86-9b8d2f8bba5d",
+              "name": "Office list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "render_as",
+                      "value": "list"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"offices\": [\n    {\n      \"id\": 1170,\n      \"name\": \"string\",\n      \"location\": \"string\",\n      \"parent_id\": 5427,\n      \"child_ids\": [\n        4125,\n        5868\n      ],\n      \"departments\": [\n        {\n          \"id\": 4065,\n          \"name\": \"string\",\n          \"parent_id\": 2429,\n          \"child_ids\": [\n            6180,\n            9652\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": 3806,\n          \"name\": \"string\",\n          \"parent_id\": 3004,\n          \"child_ids\": [\n            7745,\n            299\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": 7895,\n      \"name\": \"string\",\n      \"location\": \"string\",\n      \"parent_id\": 3262,\n      \"child_ids\": [\n        3369,\n        5387\n      ],\n      \"departments\": [\n        {\n          \"id\": 3364,\n          \"name\": \"string\",\n          \"parent_id\": 3183,\n          \"child_ids\": [\n            9023,\n            9237\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": 1721,\n          \"name\": \"string\",\n          \"parent_id\": null,\n          \"child_ids\": [\n            3550,\n            108\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"internal_job_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"absolute_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"location\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requisition_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"first_published\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"updated_at\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"application_deadline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data_compliance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4b7c47a-2b7b-48fc-98fc-23b397d5b89c",
+          "name": "Get one office",
+          "request": {
+            "name": "Get one office",
+            "description": {},
+            "url": {
+              "path": [
+                "offices",
+                ":office_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "render_as",
+                  "value": "list",
+                  "description": "Return the taxonomy flat (`list`) or nested (`tree`)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "office_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e393b849-e342-46ed-b83f-d79edd8eb9b5",
+              "name": "The office",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offices",
+                    ":office_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "render_as",
+                      "value": "list"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "office_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9667,\n  \"name\": \"string\",\n  \"location\": null,\n  \"parent_id\": null,\n  \"child_ids\": [\n    6548,\n    1148\n  ],\n  \"departments\": [\n    {\n      \"id\": 5409,\n      \"name\": \"string\",\n      \"parent_id\": null,\n      \"child_ids\": [\n        5936,\n        1735\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        }\n      ],\n      \"jobs\": [\n        {\n          \"id\": 8131,\n          \"internal_job_id\": 8688,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://WehlbjVfeAC.ymhPG,4DOuYTB+wvlovYXhj0Ai2QGp,yDz3CG\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": null,\n          \"language\": \"string\",\n          \"first_published\": \"1961-01-07T00:03:46.687Z\",\n          \"updated_at\": \"2023-07-17T20:33:30.148Z\",\n          \"application_deadline\": \"1985-01-10T09:34:01.263Z\",\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        },\n        {\n          \"id\": 626,\n          \"internal_job_id\": 2619,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://P.zlajl55Vi5C2GmOFFLih6MleKVwsqDovvzszNnK7H6r+QT\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": null,\n          \"language\": null,\n          \"first_published\": \"1957-03-13T12:04:58.455Z\",\n          \"updated_at\": \"1949-08-22T00:17:27.679Z\",\n          \"application_deadline\": \"2023-11-24T15:57:14.914Z\",\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": 5600,\n      \"name\": \"string\",\n      \"parent_id\": null,\n      \"child_ids\": [\n        7857,\n        4991\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        }\n      ],\n      \"jobs\": [\n        {\n          \"id\": 2168,\n          \"internal_job_id\": 8220,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://LChODtcxRuNPQzGDQFBYdGNinfxXtuUl.eeXNbe+zSEOiuY2XEpNPG-MqKcKHBhkp8-FknM897GBOYI8vdix,DiBv\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": \"string\",\n          \"language\": \"string\",\n          \"first_published\": \"1994-03-13T16:07:49.027Z\",\n          \"updated_at\": \"1947-10-25T23:44:25.402Z\",\n          \"application_deadline\": null,\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        },\n        {\n          \"id\": 4472,\n          \"internal_job_id\": 453,\n          \"title\": \"string\",\n          \"absolute_url\": \"https://lYIhtacLWD.hcm4HOR-,t-v6KAcMh+FDO2\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": \"string\",\n          \"language\": \"string\",\n          \"first_published\": \"2001-06-05T15:55:10.936Z\",\n          \"updated_at\": \"1995-11-28T13:53:51.740Z\",\n          \"application_deadline\": null,\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45c445e4-748e-4408-8a10-36290367dc73",
+              "name": "Office not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offices",
+                    ":office_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "render_as",
+                      "value": "list"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "office_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://boards-api.greenhouse.io/v1/boards/lifeminetx",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "295ba660-7465-47a7-8708-50569c7cff2f",
+    "name": "LifeMine Careers API (Greenhouse Job Board) Offices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine's open roles, departments, offices and application questions are machine-readable without credentials.\n\nThis document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine's own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.\n\nObserved on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).\n\n\nContact Support:\n Name: LifeMine",
+      "type": "text/plain"
+    }
+  }
+}

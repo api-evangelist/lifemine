@@ -4,13 +4,13 @@ status: candidate
 source:
 - openapi/lifemine-content-openapi.yml
 - openapi/lifemine-careers-openapi.yml
-description: >
-  LifeMine publishes NO MCP server. A search of the company's site, the WordPress host, the
-  Greenhouse board and the public MCP registries found none, and no MCP endpoint is advertised in
-  robots.txt, the sitemap or any /.well-known/ document. The tool list below is a CANDIDATE
-  derived by API Evangelist from the two OpenAPIs in this repo — it is what an MCP server over
-  LifeMine's existing public surface would expose. It is not deployed, not endorsed by LifeMine,
-  and no `url` is claimed.
+description: 'LifeMine publishes NO MCP server. A search of the company''s site, the WordPress host, the
+  Greenhouse board and the public MCP registries found none, and no MCP endpoint is advertised in robots.txt,
+  the sitemap or any /.well-known/ document. The tool list below is a CANDIDATE derived by API Evangelist
+  from the two OpenAPIs in this repo — it is what an MCP server over LifeMine''s existing public surface
+  would expose. It is not deployed, not endorsed by LifeMine, and no `url` is claimed.
+
+  '
 published: false
 search_evidence:
 - checked: https://lifeminetx.com/.well-known/ai-plugin.json
@@ -21,10 +21,10 @@ search_evidence:
   status: 404
 - checked: https://lifeminetx.com/wp-json/wp-abilities/v1/abilities
   status: 401
-  note: >
-    The WordPress Abilities API — the closest thing to a native agent-capability registry on this
-    host — is registered but returns rest_forbidden anonymously, so no published abilities could
-    be read.
+  note: 'The WordPress Abilities API — the closest thing to a native agent-capability registry on this
+    host — is registered but returns rest_forbidden anonymously, so no published abilities could be read.
+
+    '
 server:
   name: lifemine
   transport: http
@@ -42,7 +42,8 @@ tools:
   category: content
   read_only: true
 - name: list_news_categories
-  description: List the news taxonomy (press-releases, in-the-news, publications, expedition-academy) with item counts.
+  description: List the news taxonomy (press-releases, in-the-news, publications, expedition-academy)
+    with item counts.
   source_operation: openapi/lifemine-content-openapi.yml#getWpV2Categories
   category: content
   read_only: true
@@ -102,16 +103,25 @@ tools:
   category: careers
   read_only: true
 notes:
-  write_tools_excluded: >
-    Every write operation in openapi/lifemine-content-openapi.yml requires a WordPress credential
-    that is not issued to the public, so no write tool is proposed. A candidate MCP server over
-    this provider is read-only by construction.
-  input_schemas: >
-    Each tool's real input contract is the `parameters` block of its backing operation in the
-    referenced OpenAPI — those parameters were read from the host's own route index, so they are
-    accurate rather than guessed. `_fields` is the parameter that matters most for token budget on
-    the content surface.
-  rate_pacing: >
-    No rate-limit contract is published. robots.txt asks for Crawl-delay: 10, which is the only
-    pacing signal either host gives; see conventions/lifemine-conventions.yml.
+  write_tools_excluded: 'Every write operation in openapi/lifemine-content-openapi.yml requires a WordPress
+    credential that is not issued to the public, so no write tool is proposed. A candidate MCP server
+    over this provider is read-only by construction.
+
+    '
+  input_schemas: 'Each tool''s real input contract is the `parameters` block of its backing operation
+    in the referenced OpenAPI — those parameters were read from the host''s own route index, so they are
+    accurate rather than guessed. `_fields` is the parameter that matters most for token budget on the
+    content surface.
+
+    '
+  rate_pacing: 'No rate-limit contract is published. robots.txt asks for Crawl-delay: 10, which is the
+    only pacing signal either host gives; see conventions/lifemine-conventions.yml.
+
+    '
 crosswalk: mcp/lifemine-tool-crosswalk.yml
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census

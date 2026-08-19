@@ -1,0 +1,233 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Global Styles API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "global-styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/{parent}/revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/:parent/revisions",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `parent` (WordPress route pattern)."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the result set by a specific number of items."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/{parent}/revisions"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/{parent}/revisions/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/:parent/revisions/:id",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `parent` (WordPress route pattern)."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `id` (WordPress route pattern)."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/{parent}/revisions/{id}"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/themes/{stylesheet}/variations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/themes/:stylesheet/variations",
+            "params": [
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `stylesheet` (WordPress route pattern)."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/themes/{stylesheet}/variations"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/themes/{stylesheet}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/themes/:stylesheet",
+            "params": [
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `stylesheet` (WordPress route pattern)."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/themes/{stylesheet}"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/global-styles/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `id` (WordPress route pattern)."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/global-styles/{id}"
+        },
+        {
+          "info": {
+            "name": "POST /wp/v2/global-styles/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `id` (WordPress route pattern)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /wp/v2/global-styles/{id}"
+        },
+        {
+          "info": {
+            "name": "PUT /wp/v2/global-styles/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `id` (WordPress route pattern)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PUT /wp/v2/global-styles/{id}"
+        },
+        {
+          "info": {
+            "name": "PATCH /wp/v2/global-styles/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/global-styles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `id` (WordPress route pattern)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "PATCH /wp/v2/global-styles/{id}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

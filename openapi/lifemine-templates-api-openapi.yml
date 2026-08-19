@@ -1,0 +1,966 @@
+openapi: 3.2.0
+info:
+  title: LifeMine Website Content API (WordPress REST) Templates API
+  version: wp/v2
+  summary: Anonymous read API over LifeMine's corporate site content.
+  description: 'LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/. This document was DERIVED mechanically from that host''s own self-describing route index plus the per-resource JSON Schemas returned by HTTP OPTIONS on each collection - no path, parameter, type, default, enum or description here was authored by API Evangelist.
+
+
+    This is a site-content API, not a scientific/drug-discovery product API: it serves press releases and publications (`posts`, 24 items), site pages, media (117 items), the leadership/team custom post type (`team`, 15 items) and its taxonomy, plus categories and tags. Read operations require no credentials; write operations require WordPress authentication (application password or cookie+nonce) and are not available to the public.
+
+
+    Scope note: the live host also registers third-party plugin ADMIN namespaces (yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1). Those are real but are vendor control planes rather than LifeMine''s content surface, so they are excluded from this document and recorded in conventions/lifemine-conventions.yml. The complete verbatim route index is preserved at openapi/_original/lifemine-wp-json-index.json.'
+  contact:
+    name: LifeMine
+    url: https://lifeminetx.com/contact/
+  x-derived-from: https://lifeminetx.com/wp-json/
+  x-derived-on: '2026-08-04'
+  x-derived-by: API Evangelist enrichment pipeline (0-working/pipeline-enrich.md)
+  x-not-a-provider-published-spec: true
+servers:
+- url: https://lifeminetx.com/wp-json
+  description: Production
+security: []
+tags:
+- name: templates
+paths:
+  /wp/v2/templates/{parent}/revisions:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `parent` (WordPress route pattern).
+    get:
+      operationId: getWpV2TemplatesByParentRevisions
+      summary: GET /wp/v2/templates/{parent}/revisions
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by object attribute.
+        schema:
+          type: string
+          enum:
+          - date
+          - id
+          - include
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+  /wp/v2/templates/{parent}/revisions/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `parent` (WordPress route pattern).
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2TemplatesByParentRevisionsById
+      summary: GET /wp/v2/templates/{parent}/revisions/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+    delete:
+      operationId: deleteWpV2TemplatesByParentRevisionsById
+      summary: DELETE /wp/v2/templates/{parent}/revisions/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        description: Required to be true, as revisions do not support trashing.
+        schema:
+          type: boolean
+          default: false
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/templates/{id}/autosaves:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2TemplatesByIdAutosaves
+      summary: GET /wp/v2/templates/{id}/autosaves
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+    post:
+      operationId: createWpV2TemplatesByIdAutosaves
+      summary: POST /wp/v2/templates/{id}/autosaves
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type:
+                  - object
+                  - string
+                  description: Content of template.
+                title:
+                  type:
+                  - object
+                  - string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/templates/{parent}/autosaves/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `parent` (WordPress route pattern).
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2TemplatesByParentAutosavesById
+      summary: GET /wp/v2/templates/{parent}/autosaves/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+  /wp/v2/templates:
+    get:
+      operationId: getWpV2Templates
+      summary: GET /wp/v2/templates
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: wp_id
+        in: query
+        required: false
+        description: Limit to the specified post id.
+        schema:
+          type: integer
+      - name: area
+        in: query
+        required: false
+        description: Limit to the specified template part area.
+        schema:
+          type: string
+      - name: post_type
+        in: query
+        required: false
+        description: Post type to get the templates for.
+        schema:
+          type: string
+    post:
+      operationId: createWpV2Templates
+      summary: POST /wp/v2/templates
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type:
+                  - object
+                  - string
+                  default: ''
+                  description: Content of template.
+                title:
+                  type:
+                  - object
+                  - string
+                  default: ''
+                  description: Title of template.
+                description:
+                  type: string
+                  default: ''
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  default: publish
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+              required:
+              - slug
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/templates/lookup:
+    get:
+      operationId: getWpV2TemplatesLookup
+      summary: GET /wp/v2/templates/lookup
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: slug
+        in: query
+        required: true
+        description: The slug of the template to get the fallback for
+        schema:
+          type: string
+      - name: is_custom
+        in: query
+        required: false
+        description: Indicates if a template is custom or part of the template hierarchy
+        schema:
+          type: boolean
+      - name: template_prefix
+        in: query
+        required: false
+        description: The template prefix for the created template. This is used to extract the main template type, e.g. in `taxonomy-books` extracts the `taxonomy`
+        schema:
+          type: string
+  /wp/v2/templates/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2TemplatesById
+      summary: GET /wp/v2/templates/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+    post:
+      operationId: createWpV2TemplatesById
+      summary: POST /wp/v2/templates/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type:
+                  - object
+                  - string
+                  description: Content of template.
+                title:
+                  type:
+                  - object
+                  - string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    put:
+      operationId: updateWpV2TemplatesById
+      summary: PUT /wp/v2/templates/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type:
+                  - object
+                  - string
+                  description: Content of template.
+                title:
+                  type:
+                  - object
+                  - string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    patch:
+      operationId: patchWpV2TemplatesById
+      summary: PATCH /wp/v2/templates/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type:
+                  - object
+                  - string
+                  description: Content of template.
+                title:
+                  type:
+                  - object
+                  - string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    delete:
+      operationId: deleteWpV2TemplatesById
+      summary: DELETE /wp/v2/templates/{id}
+      tags:
+      - templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        description: Whether to bypass Trash and force deletion.
+        schema:
+          type: boolean
+          default: false
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+components:
+  schemas:
+    WPError:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (RFC 7617 Basic). Route /wp/v2/users/{user_id}/application-passwords is registered on this host. Write access only; not issued to the public.
+    cookieNonce:
+      type: apiKey
+      in: header
+      name: X-WP-Nonce
+      description: WordPress cookie authentication with an X-WP-Nonce header (first-party browser context only). Advertised in Access-Control-Allow-Headers on this host.
+externalDocs:
+  description: WordPress REST API Handbook (the upstream specification this host implements)
+  url: https://developer.wordpress.org/rest-api/

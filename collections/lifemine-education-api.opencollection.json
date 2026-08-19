@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Careers API (Greenhouse Job Board) Education API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "education",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List degree reference data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/education/degrees",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "Type-ahead filter term."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page of reference items."
+              }
+            ]
+          },
+          "docs": "Greenhouse's degree picklist used by the application form."
+        },
+        {
+          "info": {
+            "name": "List discipline reference data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/education/disciplines",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "Type-ahead filter term."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page of reference items."
+              }
+            ]
+          },
+          "docs": "List discipline reference data"
+        },
+        {
+          "info": {
+            "name": "List school reference data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/education/schools",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "Type-ahead filter term."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page of reference items."
+              }
+            ]
+          },
+          "docs": "List school reference data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

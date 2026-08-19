@@ -1,0 +1,231 @@
+{
+  "item": [
+    {
+      "id": "a1c04a79-26a2-4b07-928c-95d659207603",
+      "name": "sections",
+      "description": {
+        "content": "Board sections (empty on this board).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ee217db-7a52-45f2-8330-3707213ea8dc",
+          "name": "List board sections",
+          "request": {
+            "name": "List board sections",
+            "description": {
+              "content": "Board sections. Empty on LifeMine's board when observed: `{\"sections\": []}`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b4755ba-9e48-48b7-9b89-11320674b8c1",
+              "name": "Section list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sections\": [\n    {\n      \"id\": 594,\n      \"name\": \"string\",\n      \"jobs\": [\n        {\n          \"id\": 7833,\n          \"internal_job_id\": 8803,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://LDFJAosAFj.xrfgMWAGifTiHpgoQAtb64Nt44Tuiq40SJ6pcBmmk5Ef7YDQAJXj\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": \"string\",\n          \"language\": \"string\",\n          \"first_published\": \"2018-01-18T07:46:21.269Z\",\n          \"updated_at\": \"2009-02-05T12:40:54.235Z\",\n          \"application_deadline\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        },\n        {\n          \"id\": 542,\n          \"internal_job_id\": 9974,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://BWVIXjSasBRxLDhzZYAgcXYvnM.upnrSz+K6o2zNaxDYkaXX3J3mWDLiKl1ETndskn1gXJP4xHd-pkncA\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": null,\n          \"language\": \"string\",\n          \"first_published\": \"1993-11-12T08:15:28.664Z\",\n          \"updated_at\": \"1986-08-14T16:02:13.311Z\",\n          \"application_deadline\": null,\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": 7838,\n      \"name\": \"string\",\n      \"jobs\": [\n        {\n          \"id\": 4476,\n          \"internal_job_id\": 7095,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://cqsvAqbPWmvJLSgktXoSR.gpzKBcK\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": null,\n          \"language\": null,\n          \"first_published\": \"1979-09-15T00:02:11.384Z\",\n          \"updated_at\": \"2015-12-05T18:08:11.869Z\",\n          \"application_deadline\": null,\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        },\n        {\n          \"id\": 9340,\n          \"internal_job_id\": 2503,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://QcqRcDpbECJGYyumnfongdOZdXrI.lhvwmfy7PowwfdFf9rZpkg\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": \"string\"\n          },\n          \"requisition_id\": null,\n          \"language\": \"string\",\n          \"first_published\": \"2013-05-27T15:15:51.807Z\",\n          \"updated_at\": \"1951-08-31T08:28:58.700Z\",\n          \"application_deadline\": null,\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_processing_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"requires_retention_consent\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"retention_period\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"demographic_data_consent_applies\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"content\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3f47e67-2201-41ed-a77d-a256d04f002a",
+          "name": "Get one section",
+          "request": {
+            "name": "Get one section",
+            "description": {},
+            "url": {
+              "path": [
+                "sections",
+                ":section_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "section_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88e7a26b-a3cd-4189-b11c-571baee88854",
+              "name": "The section",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sections",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2767,\n  \"name\": \"string\",\n  \"jobs\": [\n    {\n      \"id\": 4686,\n      \"internal_job_id\": 998,\n      \"title\": \"string\",\n      \"absolute_url\": \"https://cNASjBweavgSRz.dwxpk4nK\",\n      \"company_name\": \"string\",\n      \"location\": {\n        \"name\": \"string\"\n      },\n      \"requisition_id\": null,\n      \"language\": \"string\",\n      \"first_published\": \"1981-10-15T19:53:20.264Z\",\n      \"updated_at\": \"1995-09-08T17:38:06.027Z\",\n      \"application_deadline\": \"2001-08-25T05:28:00.095Z\",\n      \"data_compliance\": [\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": true,\n          \"requires_retention_consent\": true,\n          \"retention_period\": null,\n          \"demographic_data_consent_applies\": true\n        },\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": true,\n          \"requires_retention_consent\": false,\n          \"retention_period\": 3117,\n          \"demographic_data_consent_applies\": false\n        }\n      ],\n      \"content\": \"string\"\n    },\n    {\n      \"id\": 9215,\n      \"internal_job_id\": 6954,\n      \"title\": \"string\",\n      \"absolute_url\": \"http://emEdAmIaZxwCtZwtugCnp.sozRPRY-,+CYDti,VfihE1zRKwfyqu5j0q1rzJgJInPmXWqwijVKBRG8ow5A3mhKqPDDZyUp+y5FHmYQzq\",\n      \"company_name\": \"string\",\n      \"location\": {\n        \"name\": \"string\"\n      },\n      \"requisition_id\": \"string\",\n      \"language\": null,\n      \"first_published\": \"1966-01-16T18:35:35.757Z\",\n      \"updated_at\": \"1972-08-01T15:15:43.468Z\",\n      \"application_deadline\": null,\n      \"metadata\": null,\n      \"data_compliance\": [\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": false,\n          \"requires_retention_consent\": false,\n          \"retention_period\": null,\n          \"demographic_data_consent_applies\": true\n        },\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": false,\n          \"requires_retention_consent\": true,\n          \"retention_period\": 4802,\n          \"demographic_data_consent_applies\": false\n        }\n      ],\n      \"content\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6ab689b-8f24-44ba-a3d5-d4c8cf08abbf",
+              "name": "Section not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sections",
+                    ":section_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "section_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://boards-api.greenhouse.io/v1/boards/lifeminetx",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "93c74780-ac09-492c-9ce4-4b7f42e19616",
+    "name": "LifeMine Careers API (Greenhouse Job Board) Sections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine's open roles, departments, offices and application questions are machine-readable without credentials.\n\nThis document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine's own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.\n\nObserved on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).\n\n\nContact Support:\n Name: LifeMine",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Customgf/v2 API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "customgf/v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /customgf/v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/customgf/v2",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /customgf/v2"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

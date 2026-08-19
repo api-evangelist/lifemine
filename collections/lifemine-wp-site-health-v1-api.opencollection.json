@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Wp Site Health/v1 API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "wp-site-health/v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /wp-site-health/v1"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

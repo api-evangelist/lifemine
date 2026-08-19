@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Block Patterns API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-patterns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/block-patterns/patterns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/block-patterns/patterns"
+          },
+          "docs": "GET /wp/v2/block-patterns/patterns"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/block-patterns/categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/block-patterns/categories"
+          },
+          "docs": "GET /wp/v2/block-patterns/categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

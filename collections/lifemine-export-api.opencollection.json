@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Export API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp-block-editor/v1/export",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-block-editor/v1/export"
+          },
+          "docs": "GET /wp-block-editor/v1/export"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

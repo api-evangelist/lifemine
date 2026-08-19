@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Themes API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/themes",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Limit result set to themes assigned one or more statuses."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/themes"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/themes/{stylesheet}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp/v2/themes/:stylesheet",
+            "params": [
+              {
+                "name": "stylesheet",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `stylesheet` (WordPress route pattern)."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/themes/{stylesheet}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

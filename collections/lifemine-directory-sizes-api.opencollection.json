@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Directory Sizes API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "directory-sizes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/directory-sizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/directory-sizes"
+          },
+          "docs": "GET /wp-site-health/v1/directory-sizes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

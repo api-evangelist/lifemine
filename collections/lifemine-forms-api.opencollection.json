@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Forms API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /customgf/v2/forms/{id}/submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://lifeminetx.com/wp-json/customgf/v2/forms/:id/submissions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `id` (WordPress route pattern)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "POST /customgf/v2/forms/{id}/submissions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

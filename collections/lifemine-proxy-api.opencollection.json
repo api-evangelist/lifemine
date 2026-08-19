@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Proxy API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "proxy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /oembed/1.0/proxy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/oembed/1.0/proxy",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "The URL of the resource for which to fetch oEmbed data."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The oEmbed format to use."
+              },
+              {
+                "name": "maxwidth",
+                "value": "",
+                "type": "query",
+                "description": "The maximum width of the embed frame in pixels."
+              },
+              {
+                "name": "maxheight",
+                "value": "",
+                "type": "query",
+                "description": "The maximum height of the embed frame in pixels."
+              },
+              {
+                "name": "discover",
+                "value": "",
+                "type": "query",
+                "description": "Whether to perform an oEmbed discovery request for unsanctioned providers."
+              }
+            ]
+          },
+          "docs": "GET /oembed/1.0/proxy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

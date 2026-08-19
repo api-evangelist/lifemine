@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Careers API (Greenhouse Job ) Board API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "board",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the job board",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/"
+          },
+          "docs": "Board name and the board's marketing content block."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Tests API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/tests/background-updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/tests/background-updates"
+          },
+          "docs": "GET /wp-site-health/v1/tests/background-updates"
+        },
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/tests/loopback-requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/tests/loopback-requests"
+          },
+          "docs": "GET /wp-site-health/v1/tests/loopback-requests"
+        },
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/tests/https-status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/tests/https-status"
+          },
+          "docs": "GET /wp-site-health/v1/tests/https-status"
+        },
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/tests/dotorg-communication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/tests/dotorg-communication"
+          },
+          "docs": "GET /wp-site-health/v1/tests/dotorg-communication"
+        },
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/tests/authorization-header",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/tests/authorization-header"
+          },
+          "docs": "GET /wp-site-health/v1/tests/authorization-header"
+        },
+        {
+          "info": {
+            "name": "GET /wp-site-health/v1/tests/page-cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-site-health/v1/tests/page-cache"
+          },
+          "docs": "GET /wp-site-health/v1/tests/page-cache"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

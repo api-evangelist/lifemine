@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Careers API (Greenhouse Job Board) Jobs API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List open jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/jobs",
+            "params": [
+              {
+                "name": "content",
+                "value": "",
+                "type": "query",
+                "description": "Include the full HTML job description (`content`) on every job."
+              }
+            ]
+          },
+          "docs": "All currently published roles. `meta.total` carries the count (2 when observed on 2026-08-04). Pass `content=true` to include the full HTML job description on each row.\n"
+        },
+        {
+          "info": {
+            "name": "Get one job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/jobs/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "8587930002",
+                "type": "path",
+                "description": "Greenhouse job id (from listJobs `id`)."
+              },
+              {
+                "name": "questions",
+                "value": "",
+                "type": "query",
+                "description": "Include the application-form `questions` array (8 questions observed on this board)."
+              },
+              {
+                "name": "pay_transparency",
+                "value": "",
+                "type": "query",
+                "description": "Include pay-transparency compliance data where the role is subject to it."
+              }
+            ]
+          },
+          "docs": "A single role, including the HTML `content`, `departments`, `offices`, GDPR `data_compliance` and — with `questions=true` — the application form questions.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

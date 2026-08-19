@@ -1,0 +1,277 @@
+{
+  "item": [
+    {
+      "id": "148f8069-48a1-434a-9ad4-c465ea8ca960",
+      "name": "jobs",
+      "description": {
+        "content": "Open roles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07168aec-9de2-4607-ab56-21f33a09344a",
+          "name": "List open jobs",
+          "request": {
+            "name": "List open jobs",
+            "description": {
+              "content": "All currently published roles. `meta.total` carries the count (2 when observed on 2026-08-04). Pass `content=true` to include the full HTML job description on each row.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "content",
+                  "value": "false",
+                  "description": "Include the full HTML job description (`content`) on every job."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a71e7a1-c7dd-4824-913c-d41ffd777c18",
+              "name": "Job list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "content",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"id\": 2403,\n      \"internal_job_id\": 7118,\n      \"title\": \"string\",\n      \"absolute_url\": \"https://AVjOR.uxkd2ZumrAWZ5ZOG0NtsH4XJ8Mzx\",\n      \"company_name\": \"string\",\n      \"location\": {\n        \"name\": \"string\"\n      },\n      \"requisition_id\": null,\n      \"language\": \"string\",\n      \"first_published\": \"1995-04-21T00:05:50.133Z\",\n      \"updated_at\": \"2020-09-05T07:49:32.009Z\",\n      \"application_deadline\": null,\n      \"data_compliance\": [\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": false,\n          \"requires_retention_consent\": true,\n          \"retention_period\": 4001,\n          \"demographic_data_consent_applies\": true\n        },\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": false,\n          \"requires_retention_consent\": true,\n          \"retention_period\": 4201,\n          \"demographic_data_consent_applies\": true\n        }\n      ],\n      \"content\": \"string\"\n    },\n    {\n      \"id\": 5207,\n      \"internal_job_id\": 8884,\n      \"title\": \"string\",\n      \"absolute_url\": \"http://wGqvSjai.kwto3GqPUA43M,VD4J0AccQgTFkATSTG\",\n      \"company_name\": \"string\",\n      \"location\": {\n        \"name\": \"string\"\n      },\n      \"requisition_id\": null,\n      \"language\": \"string\",\n      \"first_published\": \"1994-05-26T00:02:43.397Z\",\n      \"updated_at\": \"1968-07-23T16:21:39.503Z\",\n      \"application_deadline\": \"1955-04-27T04:19:57.421Z\",\n      \"metadata\": null,\n      \"data_compliance\": [\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": false,\n          \"requires_retention_consent\": false,\n          \"retention_period\": null,\n          \"demographic_data_consent_applies\": false\n        },\n        {\n          \"type\": \"string\",\n          \"requires_consent\": false,\n          \"requires_processing_consent\": true,\n          \"requires_retention_consent\": false,\n          \"retention_period\": 9483,\n          \"demographic_data_consent_applies\": true\n        }\n      ],\n      \"content\": \"string\"\n    }\n  ],\n  \"meta\": {\n    \"total\": 9178\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17e0bb59-01f7-4248-ade3-84bff73cfb88",
+          "name": "Get one job",
+          "request": {
+            "name": "Get one job",
+            "description": {
+              "content": "A single role, including the HTML `content`, `departments`, `offices`, GDPR `data_compliance` and — with `questions=true` — the application form questions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "questions",
+                  "value": "false",
+                  "description": "Include the application-form `questions` array (8 questions observed on this board)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pay_transparency",
+                  "value": "false",
+                  "description": "Include pay-transparency compliance data where the role is subject to it."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "job_id",
+                  "description": "(Required) Greenhouse job id (from listJobs `id`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cb9a243-5576-47fa-8db0-04c1e615bfaa",
+              "name": "The job",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "questions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pay_transparency",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "job_id",
+                      "description": "(Required) Greenhouse job id (from listJobs `id`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6853,\n  \"internal_job_id\": 1607,\n  \"title\": \"string\",\n  \"absolute_url\": \"https://zt.oyzZJ2AQx,3jKGmkJ6VEPGAYdq\",\n  \"company_name\": \"string\",\n  \"location\": {\n    \"name\": \"string\"\n  },\n  \"requisition_id\": null,\n  \"language\": null,\n  \"first_published\": \"1978-08-11T11:23:45.172Z\",\n  \"updated_at\": \"1998-01-09T21:39:34.345Z\",\n  \"application_deadline\": \"1958-01-25T10:32:00.778Z\",\n  \"data_compliance\": [\n    {\n      \"type\": \"string\",\n      \"requires_consent\": true,\n      \"requires_processing_consent\": true,\n      \"requires_retention_consent\": false,\n      \"retention_period\": 7356,\n      \"demographic_data_consent_applies\": true\n    },\n    {\n      \"type\": \"string\",\n      \"requires_consent\": true,\n      \"requires_processing_consent\": false,\n      \"requires_retention_consent\": true,\n      \"retention_period\": 7807,\n      \"demographic_data_consent_applies\": false\n    }\n  ],\n  \"content\": \"string\",\n  \"departments\": [\n    {\n      \"id\": 2870,\n      \"name\": \"string\",\n      \"parent_id\": null,\n      \"child_ids\": [\n        5174,\n        7757\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        }\n      ],\n      \"jobs\": [\n        {\n          \"id\": 9953,\n          \"internal_job_id\": 2498,\n          \"title\": \"string\",\n          \"absolute_url\": \"https://xVrSmuBCwyjxfWmFFLqgCPHXApMGJQpYJ.fsver02fI3\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"requisition_id\": \"string\",\n          \"language\": null,\n          \"first_published\": \"2021-08-23T19:38:07.631Z\",\n          \"updated_at\": \"1951-06-01T22:36:08.089Z\",\n          \"application_deadline\": null,\n          \"data_compliance\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"content\": \"string\"\n        },\n        {\n          \"id\": 4854,\n          \"internal_job_id\": 1218,\n          \"title\": \"string\",\n          \"absolute_url\": \"https://fTiVG.xnknHzCjJ.B9+QDsotAk+lBcHywIzwUISPAQ,XHKEFA7dna4KmVZZWT6uJD\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"requisition_id\": null,\n          \"language\": null,\n          \"first_published\": \"2024-07-21T21:01:23.686Z\",\n          \"updated_at\": \"2014-06-21T17:15:36.762Z\",\n          \"application_deadline\": \"1953-04-21T01:35:11.981Z\",\n          \"data_compliance\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"content\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": 3356,\n      \"name\": \"string\",\n      \"parent_id\": null,\n      \"child_ids\": [\n        8509,\n        8436\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n        }\n      ],\n      \"jobs\": [\n        {\n          \"id\": 5500,\n          \"internal_job_id\": 2518,\n          \"title\": \"string\",\n          \"absolute_url\": \"https://wSBEpKkeDjAQTWolqxgjZMdUll.bnkuidG5oqgzrmSkDX926w787CO7KFGen90-uVoMrx,QGEnt\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"requisition_id\": \"string\",\n          \"language\": null,\n          \"first_published\": \"2002-06-08T18:15:52.193Z\",\n          \"updated_at\": \"1958-04-24T23:22:15.574Z\",\n          \"application_deadline\": \"1983-06-12T23:38:18.545Z\",\n          \"data_compliance\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"content\": \"string\"\n        },\n        {\n          \"id\": 9063,\n          \"internal_job_id\": 5490,\n          \"title\": \"string\",\n          \"absolute_url\": \"http://lpnjMhKfjeDVHSXsLsFGDUckCCPSJyOTg.fqaC-RTUzxc1Coq7BYhuR1nVJ7IxqD1Bz4uuKz15CikqcUT6yUeIc2ew0m00rMAuD\",\n          \"company_name\": \"string\",\n          \"location\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"requisition_id\": \"string\",\n          \"language\": \"string\",\n          \"first_published\": \"1954-02-27T16:11:32.067Z\",\n          \"updated_at\": \"1954-09-12T21:39:56.619Z\",\n          \"application_deadline\": null,\n          \"metadata\": null,\n          \"data_compliance\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"content\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"offices\": [\n    {\n      \"id\": 1598,\n      \"name\": \"string\",\n      \"location\": \"string\",\n      \"parent_id\": null,\n      \"child_ids\": [\n        8893,\n        347\n      ],\n      \"departments\": [\n        {\n          \"id\": 6474,\n          \"name\": \"string\",\n          \"parent_id\": 3509,\n          \"child_ids\": [\n            6240,\n            8874\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": 647,\n          \"name\": \"string\",\n          \"parent_id\": 9474,\n          \"child_ids\": [\n            1987,\n            8490\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": 9757,\n      \"name\": \"string\",\n      \"location\": \"string\",\n      \"parent_id\": null,\n      \"child_ids\": [\n        4465,\n        6655\n      ],\n      \"departments\": [\n        {\n          \"id\": 437,\n          \"name\": \"string\",\n          \"parent_id\": null,\n          \"child_ids\": [\n            8832,\n            9554\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": 844,\n          \"name\": \"string\",\n          \"parent_id\": 422,\n          \"child_ids\": [\n            2990,\n            7446\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Department detected>\"\n            }\n          ],\n          \"jobs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"questions\": [\n    {\n      \"label\": \"string\",\n      \"required\": false,\n      \"fields\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    },\n    {\n      \"label\": \"string\",\n      \"required\": true,\n      \"fields\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"location_questions\": [\n    {\n      \"label\": \"string\",\n      \"required\": true,\n      \"fields\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    },\n    {\n      \"label\": \"string\",\n      \"required\": true,\n      \"fields\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"demographic_questions\": {},\n  \"ai_disclaimer\": \"string\",\n  \"include_ai_disclaimer\": false,\n  \"ai_opt_out_request_url\": \"http://zJamNeZAdLrRlgokrb.nzfwMONjNX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c8a1825-9c9a-4d35-aada-6522bbc4beea",
+              "name": "Job not found or no longer published",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "questions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pay_transparency",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "job_id",
+                      "description": "(Required) Greenhouse job id (from listJobs `id`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://boards-api.greenhouse.io/v1/boards/lifeminetx",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7711fe95-9c2f-40f0-9e0e-f51944fd2f0e",
+    "name": "LifeMine Careers API (Greenhouse Job Board) Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine's open roles, departments, offices and application questions are machine-readable without credentials.\n\nThis document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine's own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.\n\nObserved on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).\n\n\nContact Support:\n Name: LifeMine",
+      "type": "text/plain"
+    }
+  }
+}

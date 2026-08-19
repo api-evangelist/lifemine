@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Careers API (Greenhouse Job Board) Offices API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "offices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List offices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/offices",
+            "params": [
+              {
+                "name": "render_as",
+                "value": "",
+                "type": "query",
+                "description": "Return the taxonomy flat (`list`) or nested (`tree`)."
+              }
+            ]
+          },
+          "docs": "The office taxonomy with each office's departments. Three observed on 2026-08-04: Basel CH, Gloucester MA, Watertown MA.\n"
+        },
+        {
+          "info": {
+            "name": "Get one office",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://boards-api.greenhouse.io/v1/boards/lifeminetx/offices/:office_id",
+            "params": [
+              {
+                "name": "office_id",
+                "value": "4048711002",
+                "type": "path"
+              },
+              {
+                "name": "render_as",
+                "value": "",
+                "type": "query",
+                "description": "Return the taxonomy flat (`list`) or nested (`tree`)."
+              }
+            ]
+          },
+          "docs": "Get one office"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

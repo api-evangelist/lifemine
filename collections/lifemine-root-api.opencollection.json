@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) Root API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "root",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

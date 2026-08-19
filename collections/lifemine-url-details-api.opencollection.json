@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LifeMine Website Content API (WordPress REST) URL Details API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "url-details",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp-block-editor/v1/url-details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://lifeminetx.com/wp-json/wp-block-editor/v1/url-details",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "The URL to process."
+              }
+            ]
+          },
+          "docs": "GET /wp-block-editor/v1/url-details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

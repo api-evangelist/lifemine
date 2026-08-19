@@ -1,0 +1,1801 @@
+openapi: 3.2.0
+info:
+  title: LifeMine Website Content API (WordPress REST) Posts API
+  version: wp/v2
+  summary: Anonymous read API over LifeMine's corporate site content.
+  description: 'LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/. This document was DERIVED mechanically from that host''s own self-describing route index plus the per-resource JSON Schemas returned by HTTP OPTIONS on each collection - no path, parameter, type, default, enum or description here was authored by API Evangelist.
+
+
+    This is a site-content API, not a scientific/drug-discovery product API: it serves press releases and publications (`posts`, 24 items), site pages, media (117 items), the leadership/team custom post type (`team`, 15 items) and its taxonomy, plus categories and tags. Read operations require no credentials; write operations require WordPress authentication (application password or cookie+nonce) and are not available to the public.
+
+
+    Scope note: the live host also registers third-party plugin ADMIN namespaces (yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1). Those are real but are vendor control planes rather than LifeMine''s content surface, so they are excluded from this document and recorded in conventions/lifemine-conventions.yml. The complete verbatim route index is preserved at openapi/_original/lifemine-wp-json-index.json.'
+  contact:
+    name: LifeMine
+    url: https://lifeminetx.com/contact/
+  x-derived-from: https://lifeminetx.com/wp-json/
+  x-derived-on: '2026-08-04'
+  x-derived-by: API Evangelist enrichment pipeline (0-working/pipeline-enrich.md)
+  x-not-a-provider-published-spec: true
+servers:
+- url: https://lifeminetx.com/wp-json
+  description: Production
+security: []
+tags:
+- name: posts
+paths:
+  /wp/v2/posts:
+    get:
+      operationId: getWpV2Posts
+      summary: GET /wp/v2/posts
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/post'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 500
+          default: 10
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        description: Limit response to posts published after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: modified_after
+        in: query
+        required: false
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: author
+        in: query
+        required: false
+        description: Limit result set to posts assigned to specific authors.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: author_exclude
+        in: query
+        required: false
+        description: Ensure result set excludes posts assigned to specific authors.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: before
+        in: query
+        required: false
+        description: Limit response to posts published before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: modified_before
+        in: query
+        required: false
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: search_semantics
+        in: query
+        required: false
+        description: How to interpret the search input.
+        schema:
+          type: string
+          enum:
+          - exact
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by post attribute.
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      - name: search_columns
+        in: query
+        required: false
+        description: Array of column names to be searched.
+        schema:
+          type: array
+          default: []
+          items:
+            enum:
+            - post_title
+            - post_content
+            - post_excerpt
+            type: string
+      - name: slug
+        in: query
+        required: false
+        description: Limit result set to posts with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        required: false
+        description: Limit result set to posts assigned one or more statuses.
+        schema:
+          type: array
+          default: publish
+          items:
+            enum:
+            - publish
+            - future
+            - draft
+            - pending
+            - private
+            - trash
+            - auto-draft
+            - inherit
+            - request-pending
+            - request-confirmed
+            - request-failed
+            - request-completed
+            - acf-disabled
+            - any
+            type: string
+      - name: tax_relation
+        in: query
+        required: false
+        description: Limit result set based on relationship between multiple taxonomies.
+        schema:
+          type: string
+          enum:
+          - AND
+          - OR
+      - name: categories
+        in: query
+        required: false
+        description: Limit result set to items with specific terms assigned in the categories taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: categories_exclude
+        in: query
+        required: false
+        description: Limit result set to items except those with specific terms assigned in the categories taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: tags
+        in: query
+        required: false
+        description: Limit result set to items with specific terms assigned in the tags taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: tags_exclude
+        in: query
+        required: false
+        description: Limit result set to items except those with specific terms assigned in the tags taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: sticky
+        in: query
+        required: false
+        description: Limit result set to items that are sticky.
+        schema:
+          type: boolean
+      - name: ignore_sticky
+        in: query
+        required: false
+        description: Whether to ignore sticky posts or not.
+        schema:
+          type: boolean
+          default: true
+      - name: format
+        in: query
+        required: false
+        description: Limit result set to items assigned one or more given formats.
+        schema:
+          type: array
+          items:
+            enum:
+            - standard
+            - aside
+            - chat
+            - gallery
+            - link
+            - image
+            - quote
+            - status
+            - video
+            - audio
+            type: string
+    post:
+      operationId: createWpV2Posts
+      summary: POST /wp/v2/posts
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/posts/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2PostsById
+      summary: GET /wp/v2/posts/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: excerpt_length
+        in: query
+        required: false
+        description: Override the default excerpt length.
+        schema:
+          type: integer
+      - name: password
+        in: query
+        required: false
+        description: The password for the post if it is password protected.
+        schema:
+          type: string
+    post:
+      operationId: createWpV2PostsById
+      summary: POST /wp/v2/posts/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    put:
+      operationId: updateWpV2PostsById
+      summary: PUT /wp/v2/posts/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    patch:
+      operationId: patchWpV2PostsById
+      summary: PATCH /wp/v2/posts/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+    delete:
+      operationId: deleteWpV2PostsById
+      summary: DELETE /wp/v2/posts/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        description: Whether to bypass Trash and force deletion.
+        schema:
+          type: boolean
+          default: false
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/posts/{parent}/revisions:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `parent` (WordPress route pattern).
+    get:
+      operationId: getWpV2PostsByParentRevisions
+      summary: GET /wp/v2/posts/{parent}/revisions
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        required: false
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by object attribute.
+        schema:
+          type: string
+          enum:
+          - date
+          - id
+          - include
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+  /wp/v2/posts/{parent}/revisions/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `parent` (WordPress route pattern).
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2PostsByParentRevisionsById
+      summary: GET /wp/v2/posts/{parent}/revisions/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+    delete:
+      operationId: deleteWpV2PostsByParentRevisionsById
+      summary: DELETE /wp/v2/posts/{parent}/revisions/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        description: Required to be true, as revisions do not support trashing.
+        schema:
+          type: boolean
+          default: false
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/posts/{id}/autosaves:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2PostsByIdAutosaves
+      summary: GET /wp/v2/posts/{id}/autosaves
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: parent
+        in: query
+        required: false
+        description: The ID for the parent of the autosave.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+    post:
+      operationId: createWpV2PostsByIdAutosaves
+      summary: POST /wp/v2/posts/{id}/autosaves
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parent:
+                  type: integer
+                  description: The ID for the parent of the autosave.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                format:
+                  type: string
+                  enum:
+                  - standard
+                  - aside
+                  - chat
+                  - gallery
+                  - link
+                  - image
+                  - quote
+                  - status
+                  - video
+                  - audio
+                  description: The format for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                sticky:
+                  type: boolean
+                  description: Whether or not the post should be treated as sticky.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                categories:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the category taxonomy.
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the post_tag taxonomy.
+      security:
+      - applicationPassword: []
+      - cookieNonce: []
+  /wp/v2/posts/{parent}/autosaves/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `parent` (WordPress route pattern).
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path segment `id` (WordPress route pattern).
+    get:
+      operationId: getWpV2PostsByParentAutosavesById
+      summary: GET /wp/v2/posts/{parent}/autosaves/{id}
+      tags:
+      - posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '401':
+          description: Not authenticated / not permitted (`rest_forbidden`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: No route or resource found (`rest_no_route`, `rest_post_invalid_id`)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+components:
+  schemas:
+    WPError:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
+    post:
+      title: post
+      type: object
+      properties:
+        date:
+          description: The date the post was published, in the site's timezone.
+          type:
+          - string
+          - 'null'
+          format: date-time
+          context:
+          - view
+          - edit
+          - embed
+        date_gmt:
+          description: The date the post was published, as GMT.
+          type:
+          - string
+          - 'null'
+          format: date-time
+          context:
+          - view
+          - edit
+        guid:
+          description: The globally unique identifier for the post.
+          type: object
+          context:
+          - view
+          - edit
+          readonly: true
+          properties:
+            raw:
+              description: GUID for the post, as it exists in the database.
+              type: string
+              context:
+              - edit
+              readonly: true
+            rendered:
+              description: GUID for the post, transformed for display.
+              type: string
+              context:
+              - view
+              - edit
+              readonly: true
+        id:
+          description: Unique identifier for the post.
+          type: integer
+          context:
+          - view
+          - edit
+          - embed
+          readonly: true
+        link:
+          description: URL to the post.
+          type: string
+          format: uri
+          context:
+          - view
+          - edit
+          - embed
+          readonly: true
+        modified:
+          description: The date the post was last modified, in the site's timezone.
+          type: string
+          format: date-time
+          context:
+          - view
+          - edit
+          readonly: true
+        modified_gmt:
+          description: The date the post was last modified, as GMT.
+          type: string
+          format: date-time
+          context:
+          - view
+          - edit
+          readonly: true
+        slug:
+          description: An alphanumeric identifier for the post unique to its type.
+          type: string
+          context:
+          - view
+          - edit
+          - embed
+        status:
+          description: A named status for the post.
+          type: string
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+          - acf-disabled
+          context:
+          - view
+          - edit
+        type:
+          description: Type of post.
+          type: string
+          context:
+          - view
+          - edit
+          - embed
+          readonly: true
+        password:
+          description: A password to protect access to the content and excerpt.
+          type: string
+          context:
+          - edit
+        permalink_template:
+          description: Permalink template for the post.
+          type: string
+          context:
+          - edit
+          readonly: true
+        generated_slug:
+          description: Slug automatically generated from the post title.
+          type: string
+          context:
+          - edit
+          readonly: true
+        class_list:
+          description: An array of the class names for the post container element.
+          type: array
+          context:
+          - view
+          - edit
+          readonly: true
+          items:
+            type: string
+        title:
+          description: The title for the post.
+          type: object
+          context:
+          - view
+          - edit
+          - embed
+          properties:
+            raw:
+              description: Title for the post, as it exists in the database.
+              type: string
+              context:
+              - edit
+            rendered:
+              description: HTML title for the post, transformed for display.
+              type: string
+              context:
+              - view
+              - edit
+              - embed
+              readonly: true
+        content:
+          description: The content for the post.
+          type: object
+          context:
+          - view
+          - edit
+          properties:
+            raw:
+              description: Content for the post, as it exists in the database.
+              type: string
+              context:
+              - edit
+            rendered:
+              description: HTML content for the post, transformed for display.
+              type: string
+              context:
+              - view
+              - edit
+              readonly: true
+            block_version:
+              description: Version of the content block format used by the post.
+              type: integer
+              context:
+              - edit
+              readonly: true
+            protected:
+              description: Whether the content is protected with a password.
+              type: boolean
+              context:
+              - view
+              - edit
+              - embed
+              readonly: true
+        author:
+          description: The ID for the author of the post.
+          type: integer
+          context:
+          - view
+          - edit
+          - embed
+        excerpt:
+          description: The excerpt for the post.
+          type: object
+          context:
+          - view
+          - edit
+          - embed
+          properties:
+            raw:
+              description: Excerpt for the post, as it exists in the database.
+              type: string
+              context:
+              - edit
+            rendered:
+              description: HTML excerpt for the post, transformed for display.
+              type: string
+              context:
+              - view
+              - edit
+              - embed
+              readonly: true
+            protected:
+              description: Whether the excerpt is protected with a password.
+              type: boolean
+              context:
+              - view
+              - edit
+              - embed
+              readonly: true
+        featured_media:
+          description: The ID of the featured media for the post.
+          type: integer
+          context:
+          - view
+          - edit
+          - embed
+        comment_status:
+          description: Whether or not comments are open on the post.
+          type: string
+          enum:
+          - open
+          - closed
+          context:
+          - view
+          - edit
+        ping_status:
+          description: Whether or not the post can be pinged.
+          type: string
+          enum:
+          - open
+          - closed
+          context:
+          - view
+          - edit
+        format:
+          description: The format for the post.
+          type: string
+          enum:
+          - standard
+          - aside
+          - chat
+          - gallery
+          - link
+          - image
+          - quote
+          - status
+          - video
+          - audio
+          context:
+          - view
+          - edit
+        meta:
+          description: Meta fields.
+          type: object
+          context:
+          - view
+          - edit
+          properties:
+            _acf_changed:
+              type: boolean
+              title: ''
+              description: ''
+              default: false
+            inline_featured_image:
+              type: boolean
+              title: ''
+              description: ''
+              default: false
+            footnotes:
+              type: string
+              title: ''
+              description: ''
+              default: ''
+        sticky:
+          description: Whether or not the post should be treated as sticky.
+          type: boolean
+          context:
+          - view
+          - edit
+        template:
+          description: The theme file to use to display the post.
+          type: string
+          context:
+          - view
+          - edit
+        categories:
+          description: The terms assigned to the post in the category taxonomy.
+          type: array
+          items:
+            type: integer
+          context:
+          - view
+          - edit
+        tags:
+          description: The terms assigned to the post in the post_tag taxonomy.
+          type: array
+          items:
+            type: integer
+          context:
+          - view
+          - edit
+        acf:
+          description: ACF field data
+          type: object
+          properties: []
+      links:
+      - rel: https://api.w.org/action-publish
+        title: The current user can publish this post.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - publish
+              - future
+      - rel: https://api.w.org/action-unfiltered-html
+        title: The current user can post unfiltered HTML markup and JavaScript.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            content:
+              raw:
+                type: string
+      - rel: https://api.w.org/action-sticky
+        title: The current user can sticky this post.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            sticky:
+              type: boolean
+      - rel: https://api.w.org/action-assign-author
+        title: The current user can change the author on this post.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            author:
+              type: integer
+      - rel: https://api.w.org/action-assign-categories
+        title: The current user can assign terms in the category taxonomy.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            categories:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-categories
+        title: The current user can create terms in the category taxonomy.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            categories:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-tags
+        title: The current user can assign terms in the post_tag taxonomy.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            tags:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-tags
+        title: The current user can create terms in the post_tag taxonomy.
+        href: https://lifeminetx.com/wp-json/wp/v2/posts/{id}
+        targetSchema:
+          type: object
+          properties:
+            tags:
+              type: array
+              items:
+                type: integer
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (RFC 7617 Basic). Route /wp/v2/users/{user_id}/application-passwords is registered on this host. Write access only; not issued to the public.
+    cookieNonce:
+      type: apiKey
+      in: header
+      name: X-WP-Nonce
+      description: WordPress cookie authentication with an X-WP-Nonce header (first-party browser context only). Advertised in Access-Control-Allow-Headers on this host.
+externalDocs:
+  description: WordPress REST API Handbook (the upstream specification this host implements)
+  url: https://developer.wordpress.org/rest-api/
