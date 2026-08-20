@@ -40,6 +40,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Abilities
+  tags_raw:
   - abilities
   properties:
   - type: OpenAPI
@@ -140,6 +142,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Blocks
+  tags_raw:
   - blocks
   properties:
   - type: OpenAPI
@@ -160,6 +164,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Boards
+  tags_raw:
   - board
   properties:
   - type: OpenAPI
@@ -180,6 +186,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Categories
+  tags_raw:
   - categories
   properties:
   - type: OpenAPI
@@ -200,6 +208,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Comments
+  tags_raw:
   - comments
   properties:
   - type: OpenAPI
@@ -240,6 +250,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Departments
+  tags_raw:
   - departments
   properties:
   - type: OpenAPI
@@ -280,6 +292,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Education
+  tags_raw:
   - education
   properties:
   - type: OpenAPI
@@ -300,6 +314,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Embed
+  tags_raw:
   - embed
   properties:
   - type: OpenAPI
@@ -320,6 +336,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Export
+  tags_raw:
   - export
   properties:
   - type: OpenAPI
@@ -380,6 +398,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Forms
+  tags_raw:
   - forms
   properties:
   - type: OpenAPI
@@ -420,6 +440,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Icons
+  tags_raw:
   - icons
   properties:
   - type: OpenAPI
@@ -440,6 +462,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Job
+  tags_raw:
   - jobs
   properties:
   - type: OpenAPI
@@ -460,6 +484,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Media
+  tags_raw:
   - media
   properties:
   - type: OpenAPI
@@ -480,6 +506,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Menu Items
+  tags_raw:
   - menu-items
   properties:
   - type: OpenAPI
@@ -520,6 +548,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Menus
+  tags_raw:
   - menus
   properties:
   - type: OpenAPI
@@ -540,6 +570,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Navigation
+  tags_raw:
   - navigation
   properties:
   - type: OpenAPI
@@ -600,6 +632,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Offices
+  tags_raw:
   - offices
   properties:
   - type: OpenAPI
@@ -620,6 +654,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Pages
+  tags_raw:
   - pages
   properties:
   - type: OpenAPI
@@ -660,6 +696,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Plugins
+  tags_raw:
   - plugins
   properties:
   - type: OpenAPI
@@ -680,6 +718,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Posts
+  tags_raw:
   - posts
   properties:
   - type: OpenAPI
@@ -700,6 +740,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Proxy
+  tags_raw:
   - proxy
   properties:
   - type: OpenAPI
@@ -720,6 +762,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Root
+  tags_raw:
   - root
   properties:
   - type: OpenAPI
@@ -740,6 +784,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -760,6 +806,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Sections
+  tags_raw:
   - sections
   properties:
   - type: OpenAPI
@@ -780,6 +828,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Settings
+  tags_raw:
   - settings
   properties:
   - type: OpenAPI
@@ -820,6 +870,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Status
+  tags_raw:
   - statuses
   properties:
   - type: OpenAPI
@@ -840,6 +892,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -880,6 +934,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Team
+  tags_raw:
   - team
   properties:
   - type: OpenAPI
@@ -899,7 +955,8 @@ apis:
   description: The team_categories API from LifeMine — 2 operation(s) for team_categories.
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - team_categories
   properties:
   - type: OpenAPI
@@ -940,6 +997,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Templates
+  tags_raw:
   - templates
   properties:
   - type: OpenAPI
@@ -960,6 +1019,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Tests
+  tags_raw:
   - tests
   properties:
   - type: OpenAPI
@@ -980,6 +1041,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Themes
+  tags_raw:
   - themes
   properties:
   - type: OpenAPI
@@ -1000,6 +1063,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Types
+  tags_raw:
   - types
   properties:
   - type: OpenAPI
@@ -1040,6 +1105,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -1080,6 +1147,8 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
+  - Widgets
+  tags_raw:
   - widgets
   properties:
   - type: OpenAPI
@@ -1139,7 +1208,8 @@ apis:
   description: The wp_pattern_category API from LifeMine — 2 operation(s) for wp_pattern_category.
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - wp_pattern_category
   properties:
   - type: OpenAPI
