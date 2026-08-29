@@ -13,6 +13,17 @@ description: >-
   machine-readable read APIs as byproducts of the platforms it runs: a WordPress REST API serving
   its news, pages, media and a structured leadership/board record set, and a Greenhouse job board
   API serving its open roles, departments and offices.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 image: https://lifeminetx.com/wp-content/uploads/2024/05/cropped-Favicon-B.png
 url: https://raw.githubusercontent.com/api-evangelist/lifemine/refs/heads/main/apis.yml
 x-type: company
