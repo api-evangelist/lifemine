@@ -673,6 +673,24 @@ paths:
       - cookieNonce: []
 components:
   schemas:
+    WPError:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
     team:
       title: team
       type: object
@@ -918,24 +936,6 @@ components:
               type: array
               items:
                 type: integer
-    WPError:
-      type: object
-      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden.
-        message:
-          type: string
-          description: Human-readable message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-      required:
-      - code
-      - message
   securitySchemes:
     applicationPassword:
       type: http

@@ -84,24 +84,12 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    DataCompliance:
+    Location:
       type: object
       properties:
-        type:
+        name:
           type: string
-          description: Compliance regime, e.g. gdpr.
-        requires_consent:
-          type: boolean
-        requires_processing_consent:
-          type: boolean
-        requires_retention_consent:
-          type: boolean
-        retention_period:
-          type:
-          - integer
-          - 'null'
-        demographic_data_consent_applies:
-          type: boolean
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -155,18 +143,6 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
-    Error:
-      type: object
-      description: Greenhouse error envelope.
-      properties:
-        error:
-          type: string
     Department:
       type: object
       properties:
@@ -220,6 +196,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Department'
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
+    DataCompliance:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Compliance regime, e.g. gdpr.
+        requires_consent:
+          type: boolean
+        requires_processing_consent:
+          type: boolean
+        requires_retention_consent:
+          type: boolean
+        retention_period:
+          type:
+          - integer
+          - 'null'
+        demographic_data_consent_applies:
+          type: boolean
   parameters:
     RenderAs:
       name: render_as

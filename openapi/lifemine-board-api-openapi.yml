@@ -52,12 +52,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: Greenhouse error envelope.
-      properties:
-        error:
-          type: string
     Board:
       type: object
       description: Board-level metadata.
@@ -68,6 +62,12 @@ components:
         content:
           type: string
           description: HTML-escaped marketing block shown at the top of the board.
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html

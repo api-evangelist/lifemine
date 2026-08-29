@@ -113,6 +113,12 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     JobDetail:
       allOf:
       - $ref: '#/components/schemas/Job'
@@ -156,24 +162,6 @@ components:
             - 'null'
             format: uri
             description: URL an applicant uses to opt out of AI-assisted evaluation.
-    DataCompliance:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Compliance regime, e.g. gdpr.
-        requires_consent:
-          type: boolean
-        requires_processing_consent:
-          type: boolean
-        requires_retention_consent:
-          type: boolean
-        retention_period:
-          type:
-          - integer
-          - 'null'
-        demographic_data_consent_applies:
-          type: boolean
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -227,38 +215,6 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
-    Error:
-      type: object
-      description: Greenhouse error envelope.
-      properties:
-        error:
-          type: string
-    Question:
-      type: object
-      properties:
-        label:
-          type: string
-        required:
-          type: boolean
-        fields:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-              values:
-                type: array
-                items:
-                  type: object
     Department:
       type: object
       properties:
@@ -286,6 +242,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Job'
+    Question:
+      type: object
+      properties:
+        label:
+          type: string
+        required:
+          type: boolean
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              values:
+                type: array
+                items:
+                  type: object
     Office:
       type: object
       properties:
@@ -312,6 +288,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Department'
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
+    DataCompliance:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Compliance regime, e.g. gdpr.
+        requires_consent:
+          type: boolean
+        requires_processing_consent:
+          type: boolean
+        requires_retention_consent:
+          type: boolean
+        retention_period:
+          type:
+          - integer
+          - 'null'
+        demographic_data_consent_applies:
+          type: boolean
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html
