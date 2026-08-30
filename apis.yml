@@ -175,7 +175,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - Boards
+  - board
   tags_raw:
   - board
   properties:
@@ -261,7 +261,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - Departments
+  - departments
   tags_raw:
   - departments
   properties:
@@ -303,7 +303,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - Education
+  - education
   tags_raw:
   - education
   properties:
