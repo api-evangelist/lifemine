@@ -175,7 +175,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - board
+  - Boards
   tags_raw:
   - board
   properties:
@@ -261,7 +261,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - departments
+  - Departments
   tags_raw:
   - departments
   properties:
@@ -303,7 +303,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - education
+  - Education
   tags_raw:
   - education
   properties:
@@ -517,7 +517,7 @@ apis:
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
   tags:
-  - Menu Items
+  - menu-items
   tags_raw:
   - menu-items
   properties:
@@ -966,7 +966,8 @@ apis:
   description: The team_categories API from LifeMine — 2 operation(s) for team_categories.
   humanURL: https://lifeminetx.com/
   baseURL: https://lifeminetx.com/wp-json
-  tags: []
+  tags:
+  - Team Categories
   tags_raw:
   - team_categories
   properties:
