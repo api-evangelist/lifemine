@@ -24,6 +24,19 @@ deliveryModel:
   - openapi
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
 image: https://lifeminetx.com/wp-content/uploads/2024/05/cropped-Favicon-B.png
 url: https://raw.githubusercontent.com/api-evangelist/lifemine/refs/heads/main/apis.yml
 x-type: company
@@ -1327,8 +1340,9 @@ common:
   url: security/lifemine-domain-security.yml
 - type: AgenticAccess
   url: agentic-access/lifemine-agentic-access.yml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/lifemine-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: ToolCrosswalk
   url: mcp/lifemine-tool-crosswalk.yml
 - type: AgentSkill
