@@ -1295,6 +1295,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Contact
+  url: https://lifeminetx.com/contact/
 - type: Overlay
   url: overlays/lifemine-careers-overlay.yaml
 - type: Website

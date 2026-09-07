@@ -2,18 +2,11 @@
   "repo": "lifemine",
   "feeds": [
     {
-      "source": "https://lifeminetx.com/pipeline/feed/",
-      "feed_url": "https://lifeminetx.com/pipeline/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
-    },
-    {
-      "source": "https://lifeminetx.com/news/feed/",
+      "source": "https://lifeminetx.com/news/",
       "feed_url": "https://lifeminetx.com/news/feed/",
       "title": "",
       "saved": 0,
-      "method": "feed"
+      "method": "discovered"
     },
     {
       "source": "https://lifeminetx.com/pipeline/",
@@ -23,13 +16,20 @@
       "method": "discovered"
     },
     {
-      "source": "https://lifeminetx.com/news/",
+      "source": "https://lifeminetx.com/news/feed/",
       "feed_url": "https://lifeminetx.com/news/feed/",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
+    },
+    {
+      "source": "https://lifeminetx.com/pipeline/feed/",
+      "feed_url": "https://lifeminetx.com/pipeline/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-30T22:33:40Z"
+  "fetched": "2026-09-06T19:17:18Z"
 }
