@@ -3,15 +3,7 @@ info:
   title: LifeMine Careers API (Greenhouse Job Board) Jobs API
   version: v1
   summary: Anonymous read API over LifeMine's open roles, departments and offices.
-  description: 'LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine''s open roles, departments, offices and application questions are machine-readable without credentials.
-
-
-    This document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine''s own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.
-
-
-    Observed on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).
-
-    '
+  description: LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx).
   contact:
     name: LifeMine
     url: https://lifeminetx.com/contact/
@@ -27,18 +19,16 @@ servers:
   description: LifeMine's Greenhouse job board (board token lifeminetx)
 security: []
 tags:
-- name: jobs
+- name: Jobs
   description: Open roles.
 paths:
   /jobs:
     get:
       operationId: listJobs
       summary: List open jobs
-      description: 'All currently published roles. `meta.total` carries the count (2 when observed on 2026-08-04). Pass `content=true` to include the full HTML job description on each row.
-
-        '
+      description: All currently published roles. `meta.total` carries the count (2 when observed on 2026-08-04). Pass `content=true` to include the full HTML job description on each row.
       tags:
-      - jobs
+      - Jobs
       parameters:
       - name: content
         in: query
@@ -78,11 +68,9 @@ paths:
     get:
       operationId: getJob
       summary: Get one job
-      description: 'A single role, including the HTML `content`, `departments`, `offices`, GDPR `data_compliance` and — with `questions=true` — the application form questions.
-
-        '
+      description: A single role, including the HTML `content`, `departments`, `offices`, GDPR `data_compliance` and — with `questions=true` — the application form questions.
       tags:
-      - jobs
+      - Jobs
       parameters:
       - name: questions
         in: query
@@ -113,55 +101,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
-    JobDetail:
-      allOf:
-      - $ref: '#/components/schemas/Job'
-      - type: object
-        properties:
-          departments:
-            type: array
-            items:
-              $ref: '#/components/schemas/Department'
-          offices:
-            type: array
-            items:
-              $ref: '#/components/schemas/Office'
-          questions:
-            type: array
-            description: Application-form questions. Present only when `questions=true`.
-            items:
-              $ref: '#/components/schemas/Question'
-          location_questions:
-            type: array
-            items:
-              $ref: '#/components/schemas/Question'
-          demographic_questions:
-            type:
-            - object
-            - 'null'
-          compliance:
-            type:
-            - array
-            - 'null'
-          ai_disclaimer:
-            type:
-            - string
-            - 'null'
-            description: AI-usage disclaimer text shown to applicants.
-          include_ai_disclaimer:
-            type: boolean
-          ai_opt_out_request_url:
-            type:
-            - string
-            - 'null'
-            format: uri
-            description: URL an applicant uses to opt out of AI-assisted evaluation.
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -215,6 +154,107 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
+    JobDetail:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - type: object
+        properties:
+          departments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Department'
+          offices:
+            type: array
+            items:
+              $ref: '#/components/schemas/Office'
+          questions:
+            type: array
+            description: Application-form questions. Present only when `questions=true`.
+            items:
+              $ref: '#/components/schemas/Question'
+          location_questions:
+            type: array
+            items:
+              $ref: '#/components/schemas/Question'
+          demographic_questions:
+            type:
+            - object
+            - 'null'
+          compliance:
+            type:
+            - array
+            - 'null'
+          ai_disclaimer:
+            type:
+            - string
+            - 'null'
+            description: AI-usage disclaimer text shown to applicants.
+          include_ai_disclaimer:
+            type: boolean
+          ai_opt_out_request_url:
+            type:
+            - string
+            - 'null'
+            format: uri
+            description: URL an applicant uses to opt out of AI-assisted evaluation.
+    Question:
+      type: object
+      properties:
+        label:
+          type: string
+        required:
+          type: boolean
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              values:
+                type: array
+                items:
+                  type: object
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
+    Office:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        location:
+          type:
+          - string
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        child_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
     Department:
       type: object
       properties:
@@ -242,58 +282,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Job'
-    Question:
-      type: object
-      properties:
-        label:
-          type: string
-        required:
-          type: boolean
-        fields:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-              values:
-                type: array
-                items:
-                  type: object
-    Office:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        location:
-          type:
-          - string
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        child_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        departments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Department'
-    Error:
-      type: object
-      description: Greenhouse error envelope.
-      properties:
-        error:
-          type: string
     DataCompliance:
       type: object
       properties:

@@ -1,15 +1,9 @@
 openapi: 3.2.0
 info:
-  title: LifeMine Website Content API (WordPress REST) Font Families API
+  title: LifeMine Website Content API (WordPress REST) Font Families…
   version: wp/v2
   summary: Anonymous read API over LifeMine's corporate site content.
-  description: 'LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/. This document was DERIVED mechanically from that host''s own self-describing route index plus the per-resource JSON Schemas returned by HTTP OPTIONS on each collection - no path, parameter, type, default, enum or description here was authored by API Evangelist.
-
-
-    This is a site-content API, not a scientific/drug-discovery product API: it serves press releases and publications (`posts`, 24 items), site pages, media (117 items), the leadership/team custom post type (`team`, 15 items) and its taxonomy, plus categories and tags. Read operations require no credentials; write operations require WordPress authentication (application password or cookie+nonce) and are not available to the public.
-
-
-    Scope note: the live host also registers third-party plugin ADMIN namespaces (yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1). Those are real but are vendor control planes rather than LifeMine''s content surface, so they are excluded from this document and recorded in conventions/lifemine-conventions.yml. The complete verbatim route index is preserved at openapi/_original/lifemine-wp-json-index.json.'
+  description: LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/.
   contact:
     name: LifeMine
     url: https://lifeminetx.com/contact/
@@ -22,14 +16,14 @@ servers:
   description: Production
 security: []
 tags:
-- name: font-families
+- name: font families
 paths:
   /wp/v2/font-families:
     get:
       operationId: getWpV2FontFamilies
       summary: GET /wp/v2/font-families
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -148,7 +142,7 @@ paths:
       operationId: createWpV2FontFamilies
       summary: POST /wp/v2/font-families
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -207,7 +201,7 @@ paths:
       operationId: getWpV2FontFamiliesById
       summary: GET /wp/v2/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -249,7 +243,7 @@ paths:
       operationId: createWpV2FontFamiliesById
       summary: POST /wp/v2/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -300,7 +294,7 @@ paths:
       operationId: updateWpV2FontFamiliesById
       summary: PUT /wp/v2/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -351,7 +345,7 @@ paths:
       operationId: patchWpV2FontFamiliesById
       summary: PATCH /wp/v2/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -402,7 +396,7 @@ paths:
       operationId: deleteWpV2FontFamiliesById
       summary: DELETE /wp/v2/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -451,7 +445,7 @@ paths:
       operationId: getWpV2FontFamiliesByFontFamilyIdFontFaces
       summary: GET /wp/v2/font-families/{font_family_id}/font-faces
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -562,7 +556,7 @@ paths:
       operationId: createWpV2FontFamiliesByFontFamilyIdFontFaces
       summary: POST /wp/v2/font-families/{font_family_id}/font-faces
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -627,7 +621,7 @@ paths:
       operationId: getWpV2FontFamiliesByFontFamilyIdFontFacesById
       summary: GET /wp/v2/font-families/{font_family_id}/font-faces/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response
@@ -669,7 +663,7 @@ paths:
       operationId: deleteWpV2FontFamiliesByFontFamilyIdFontFacesById
       summary: DELETE /wp/v2/font-families/{font_family_id}/font-faces/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: Successful response

@@ -3,15 +3,7 @@ info:
   title: LifeMine Careers API (Greenhouse Job ) Board API
   version: v1
   summary: Anonymous read API over LifeMine's open roles, departments and offices.
-  description: 'LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine''s open roles, departments, offices and application questions are machine-readable without credentials.
-
-
-    This document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine''s own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.
-
-
-    Observed on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).
-
-    '
+  description: LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx).
   contact:
     name: LifeMine
     url: https://lifeminetx.com/contact/
@@ -27,7 +19,7 @@ servers:
   description: LifeMine's Greenhouse job board (board token lifeminetx)
 security: []
 tags:
-- name: board
+- name: Board
   description: Board-level metadata.
 paths:
   /:
@@ -36,7 +28,7 @@ paths:
       summary: Get the job board
       description: Board name and the board's marketing content block.
       tags:
-      - board
+      - Board
       responses:
         '200':
           description: The board

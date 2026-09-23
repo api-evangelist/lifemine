@@ -3,15 +3,7 @@ info:
   title: LifeMine Careers API (Greenhouse Job Board) Education API
   version: v1
   summary: Anonymous read API over LifeMine's open roles, departments and offices.
-  description: 'LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine''s open roles, departments, offices and application questions are machine-readable without credentials.
-
-
-    This document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine''s own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.
-
-
-    Observed on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).
-
-    '
+  description: LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx).
   contact:
     name: LifeMine
     url: https://lifeminetx.com/contact/
@@ -27,7 +19,7 @@ servers:
   description: LifeMine's Greenhouse job board (board token lifeminetx)
 security: []
 tags:
-- name: education
+- name: Education
   description: Greenhouse education reference data used by application forms.
 paths:
   /education/degrees:
@@ -36,7 +28,7 @@ paths:
       summary: List degree reference data
       description: Greenhouse's degree picklist used by the application form.
       tags:
-      - education
+      - Education
       parameters:
       - $ref: '#/components/parameters/Term'
       - $ref: '#/components/parameters/Page'
@@ -52,7 +44,7 @@ paths:
       operationId: listEducationDisciplines
       summary: List discipline reference data
       tags:
-      - education
+      - Education
       parameters:
       - $ref: '#/components/parameters/Term'
       - $ref: '#/components/parameters/Page'
@@ -68,7 +60,7 @@ paths:
       operationId: listEducationSchools
       summary: List school reference data
       tags:
-      - education
+      - Education
       parameters:
       - $ref: '#/components/parameters/Term'
       - $ref: '#/components/parameters/Page'
@@ -80,21 +72,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/EducationItems'
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page of reference items.
-      schema:
-        type: string
-    Term:
-      name: term
-      in: query
-      required: false
-      description: Type-ahead filter term.
-      schema:
-        type: string
   schemas:
     EducationItems:
       type: object
@@ -109,6 +86,21 @@ components:
                 format: int64
               text:
                 type: string
+  parameters:
+    Term:
+      name: term
+      in: query
+      required: false
+      description: Type-ahead filter term.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page of reference items.
+      schema:
+        type: string
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html

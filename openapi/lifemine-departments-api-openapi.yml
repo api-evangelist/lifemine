@@ -3,15 +3,7 @@ info:
   title: LifeMine Careers API (Greenhouse Job Board) Departments API
   version: v1
   summary: Anonymous read API over LifeMine's open roles, departments and offices.
-  description: 'LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx). Greenhouse exposes every job board as a public, unauthenticated JSON API, so LifeMine''s open roles, departments, offices and application questions are machine-readable without credentials.
-
-
-    This document was DERIVED by API Evangelist from two real sources: (a) the endpoint and query-parameter surface published in the Greenhouse Job Board API documentation (https://developers.greenhouse.io/job-board.html), and (b) live responses fetched from LifeMine''s own board on 2026-08-04 — every schema property below was observed in an actual payload from `boards-api.greenhouse.io/v1/boards/lifeminetx`. It is NOT a specification published by LifeMine or by Greenhouse.
-
-
-    Observed on 2026-08-04: 2 open roles (both Watertown, Massachusetts), 32 departments, 3 offices (Basel CH, Gloucester MA, Watertown MA), 0 sections. Job objects carry GDPR `data_compliance` blocks and AI-disclosure fields (`ai_disclaimer`, `include_ai_disclaimer`, `ai_opt_out_request_url`).
-
-    '
+  description: LifeMine hosts its careers surface on Greenhouse under the board token `lifeminetx` (https://job-boards.greenhouse.io/lifeminetx).
   contact:
     name: LifeMine
     url: https://lifeminetx.com/contact/
@@ -27,7 +19,7 @@ servers:
   description: LifeMine's Greenhouse job board (board token lifeminetx)
 security: []
 tags:
-- name: departments
+- name: Departments
   description: Department taxonomy.
 paths:
   /departments:
@@ -36,7 +28,7 @@ paths:
       summary: List departments
       description: The department taxonomy, with the jobs attached to each. 32 departments observed.
       tags:
-      - departments
+      - Departments
       parameters:
       - $ref: '#/components/parameters/RenderAs'
       responses:
@@ -64,7 +56,7 @@ paths:
       operationId: getDepartment
       summary: Get one department
       tags:
-      - departments
+      - Departments
       parameters:
       - $ref: '#/components/parameters/RenderAs'
       responses:
@@ -82,12 +74,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -141,6 +127,30 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
+    DataCompliance:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Compliance regime, e.g. gdpr.
+        requires_consent:
+          type: boolean
+        requires_processing_consent:
+          type: boolean
+        requires_retention_consent:
+          type: boolean
+        retention_period:
+          type:
+          - integer
+          - 'null'
+        demographic_data_consent_applies:
+          type: boolean
     Department:
       type: object
       properties:
@@ -168,30 +178,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Job'
-    Error:
-      type: object
-      description: Greenhouse error envelope.
-      properties:
-        error:
-          type: string
-    DataCompliance:
+    Location:
       type: object
       properties:
-        type:
+        name:
           type: string
-          description: Compliance regime, e.g. gdpr.
-        requires_consent:
-          type: boolean
-        requires_processing_consent:
-          type: boolean
-        requires_retention_consent:
-          type: boolean
-        retention_period:
-          type:
-          - integer
-          - 'null'
-        demographic_data_consent_applies:
-          type: boolean
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
   parameters:
     RenderAs:
       name: render_as

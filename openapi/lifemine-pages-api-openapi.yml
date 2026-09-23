@@ -3,13 +3,7 @@ info:
   title: LifeMine Website Content API (WordPress REST) Pages API
   version: wp/v2
   summary: Anonymous read API over LifeMine's corporate site content.
-  description: 'LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/. This document was DERIVED mechanically from that host''s own self-describing route index plus the per-resource JSON Schemas returned by HTTP OPTIONS on each collection - no path, parameter, type, default, enum or description here was authored by API Evangelist.
-
-
-    This is a site-content API, not a scientific/drug-discovery product API: it serves press releases and publications (`posts`, 24 items), site pages, media (117 items), the leadership/team custom post type (`team`, 15 items) and its taxonomy, plus categories and tags. Read operations require no credentials; write operations require WordPress authentication (application password or cookie+nonce) and are not available to the public.
-
-
-    Scope note: the live host also registers third-party plugin ADMIN namespaces (yoast/v1, wordfence/v1, wpe/cache-plugin/v1, wpe_sign_on_plugin/v1). Those are real but are vendor control planes rather than LifeMine''s content surface, so they are excluded from this document and recorded in conventions/lifemine-conventions.yml. The complete verbatim route index is preserved at openapi/_original/lifemine-wp-json-index.json.'
+  description: LifeMine (lifeminetx.com) runs on WordPress and exposes the WordPress REST API publicly and anonymously at https://lifeminetx.com/wp-json/.
   contact:
     name: LifeMine
     url: https://lifeminetx.com/contact/
@@ -22,14 +16,14 @@ servers:
   description: Production
 security: []
 tags:
-- name: pages
+- name: Pages
 paths:
   /wp/v2/pages:
     get:
       operationId: getWpV2Pages
       summary: GET /wp/v2/pages
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -272,7 +266,7 @@ paths:
       operationId: createWpV2Pages
       summary: POST /wp/v2/pages
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -383,7 +377,7 @@ paths:
       operationId: getWpV2PagesById
       summary: GET /wp/v2/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -437,7 +431,7 @@ paths:
       operationId: createWpV2PagesById
       summary: POST /wp/v2/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -540,7 +534,7 @@ paths:
       operationId: updateWpV2PagesById
       summary: PUT /wp/v2/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -643,7 +637,7 @@ paths:
       operationId: patchWpV2PagesById
       summary: PATCH /wp/v2/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -746,7 +740,7 @@ paths:
       operationId: deleteWpV2PagesById
       summary: DELETE /wp/v2/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -795,7 +789,7 @@ paths:
       operationId: getWpV2PagesByParentRevisions
       summary: GET /wp/v2/pages/{parent}/revisions
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -922,7 +916,7 @@ paths:
       operationId: getWpV2PagesByParentRevisionsById
       summary: GET /wp/v2/pages/{parent}/revisions/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -964,7 +958,7 @@ paths:
       operationId: deleteWpV2PagesByParentRevisionsById
       summary: DELETE /wp/v2/pages/{parent}/revisions/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -1013,7 +1007,7 @@ paths:
       operationId: getWpV2PagesByIdAutosaves
       summary: GET /wp/v2/pages/{id}/autosaves
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -1061,7 +1055,7 @@ paths:
       operationId: createWpV2PagesByIdAutosaves
       summary: POST /wp/v2/pages/{id}/autosaves
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -1178,7 +1172,7 @@ paths:
       operationId: getWpV2PagesByParentAutosavesById
       summary: GET /wp/v2/pages/{parent}/autosaves/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: Successful response
@@ -1218,6 +1212,24 @@ paths:
           default: view
 components:
   schemas:
+    WPError:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
     page:
       title: page
       type: object
@@ -2915,24 +2927,6 @@ components:
           properties:
             author:
               type: integer
-    WPError:
-      type: object
-      description: WordPress REST API error envelope (not RFC 9457). Observed live on this host.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden.
-        message:
-          type: string
-          description: Human-readable message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-      required:
-      - code
-      - message
   securitySchemes:
     applicationPassword:
       type: http
