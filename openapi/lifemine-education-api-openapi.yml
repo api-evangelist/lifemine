@@ -72,6 +72,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/EducationItems'
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page of reference items.
+      schema:
+        type: string
+    Term:
+      name: term
+      in: query
+      required: false
+      description: Type-ahead filter term.
+      schema:
+        type: string
   schemas:
     EducationItems:
       type: object
@@ -86,21 +101,6 @@ components:
                 format: int64
               text:
                 type: string
-  parameters:
-    Term:
-      name: term
-      in: query
-      required: false
-      description: Type-ahead filter term.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page of reference items.
-      schema:
-        type: string
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html

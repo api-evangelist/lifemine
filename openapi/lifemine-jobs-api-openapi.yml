@@ -154,12 +154,85 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
-    Error:
+    Department:
       type: object
-      description: Greenhouse error envelope.
       properties:
-        error:
+        id:
+          type: integer
+          format: int64
+        name:
           type: string
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        child_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        children:
+          type: array
+          description: Present when `render_as=tree`.
+          items:
+            $ref: '#/components/schemas/Department'
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    Office:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        location:
+          type:
+          - string
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        child_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+    Question:
+      type: object
+      properties:
+        label:
+          type: string
+        required:
+          type: boolean
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              values:
+                type: array
+                items:
+                  type: object
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     JobDetail:
       allOf:
       - $ref: '#/components/schemas/Job'
@@ -203,85 +276,12 @@ components:
             - 'null'
             format: uri
             description: URL an applicant uses to opt out of AI-assisted evaluation.
-    Question:
+    Error:
       type: object
+      description: Greenhouse error envelope.
       properties:
-        label:
+        error:
           type: string
-        required:
-          type: boolean
-        fields:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-              values:
-                type: array
-                items:
-                  type: object
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
-    Office:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        location:
-          type:
-          - string
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        child_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        departments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Department'
-    Department:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        child_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        children:
-          type: array
-          description: Present when `render_as=tree`.
-          items:
-            $ref: '#/components/schemas/Department'
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
     DataCompliance:
       type: object
       properties:
