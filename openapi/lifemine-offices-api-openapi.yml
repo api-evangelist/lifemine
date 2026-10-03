@@ -73,7 +73,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
+  parameters:
+    RenderAs:
+      name: render_as
+      in: query
+      required: false
+      description: Return the taxonomy flat (`list`) or nested (`tree`).
+      schema:
+        type: string
+        enum:
+        - list
+        - tree
+        default: list
   schemas:
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -127,6 +145,56 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
+    DataCompliance:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Compliance regime, e.g. gdpr.
+        requires_consent:
+          type: boolean
+        requires_processing_consent:
+          type: boolean
+        requires_retention_consent:
+          type: boolean
+        retention_period:
+          type:
+          - integer
+          - 'null'
+        demographic_data_consent_applies:
+          type: boolean
+    Office:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        location:
+          type:
+          - string
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        child_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
     Department:
       type: object
       properties:
@@ -154,74 +222,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Job'
-    Office:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        location:
-          type:
-          - string
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        child_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        departments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Department'
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
-    Error:
-      type: object
-      description: Greenhouse error envelope.
-      properties:
-        error:
-          type: string
-    DataCompliance:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Compliance regime, e.g. gdpr.
-        requires_consent:
-          type: boolean
-        requires_processing_consent:
-          type: boolean
-        requires_retention_consent:
-          type: boolean
-        retention_period:
-          type:
-          - integer
-          - 'null'
-        demographic_data_consent_applies:
-          type: boolean
-  parameters:
-    RenderAs:
-      name: render_as
-      in: query
-      required: false
-      description: Return the taxonomy flat (`list`) or nested (`tree`).
-      schema:
-        type: string
-        enum:
-        - list
-        - tree
-        default: list
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html
