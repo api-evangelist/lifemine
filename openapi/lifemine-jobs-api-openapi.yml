@@ -101,18 +101,152 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
+    JobDetail:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - type: object
+        properties:
+          departments:
+            type: array
+            items:
+              $ref: '#/components/schemas/Department'
+          offices:
+            type: array
+            items:
+              $ref: '#/components/schemas/Office'
+          questions:
+            type: array
+            description: Application-form questions. Present only when `questions=true`.
+            items:
+              $ref: '#/components/schemas/Question'
+          location_questions:
+            type: array
+            items:
+              $ref: '#/components/schemas/Question'
+          demographic_questions:
+            type:
+            - object
+            - 'null'
+          compliance:
+            type:
+            - array
+            - 'null'
+          ai_disclaimer:
+            type:
+            - string
+            - 'null'
+            description: AI-usage disclaimer text shown to applicants.
+          include_ai_disclaimer:
+            type: boolean
+          ai_opt_out_request_url:
+            type:
+            - string
+            - 'null'
+            format: uri
+            description: URL an applicant uses to opt out of AI-assisted evaluation.
+    Office:
       type: object
-      description: Greenhouse error envelope.
       properties:
-        error:
+        id:
+          type: integer
+          format: int64
+        name:
           type: string
+        location:
+          type:
+          - string
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        child_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+    Question:
+      type: object
+      properties:
+        label:
+          type: string
+        required:
+          type: boolean
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              values:
+                type: array
+                items:
+                  type: object
+    DataCompliance:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Compliance regime, e.g. gdpr.
+        requires_consent:
+          type: boolean
+        requires_processing_consent:
+          type: boolean
+        requires_retention_consent:
+          type: boolean
+        retention_period:
+          type:
+          - integer
+          - 'null'
+        demographic_data_consent_applies:
+          type: boolean
     Location:
       type: object
       properties:
         name:
           type: string
           description: Free-text location, e.g. "Watertown, Massachusetts, United States".
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        child_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        children:
+          type: array
+          description: Present when `render_as=tree`.
+          items:
+            $ref: '#/components/schemas/Department'
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    Error:
+      type: object
+      description: Greenhouse error envelope.
+      properties:
+        error:
+          type: string
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -166,140 +300,6 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
-    DataCompliance:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Compliance regime, e.g. gdpr.
-        requires_consent:
-          type: boolean
-        requires_processing_consent:
-          type: boolean
-        requires_retention_consent:
-          type: boolean
-        retention_period:
-          type:
-          - integer
-          - 'null'
-        demographic_data_consent_applies:
-          type: boolean
-    Question:
-      type: object
-      properties:
-        label:
-          type: string
-        required:
-          type: boolean
-        fields:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-              values:
-                type: array
-                items:
-                  type: object
-    Office:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        location:
-          type:
-          - string
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        child_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        departments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Department'
-    Department:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        child_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        children:
-          type: array
-          description: Present when `render_as=tree`.
-          items:
-            $ref: '#/components/schemas/Department'
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
-    JobDetail:
-      allOf:
-      - $ref: '#/components/schemas/Job'
-      - type: object
-        properties:
-          departments:
-            type: array
-            items:
-              $ref: '#/components/schemas/Department'
-          offices:
-            type: array
-            items:
-              $ref: '#/components/schemas/Office'
-          questions:
-            type: array
-            description: Application-form questions. Present only when `questions=true`.
-            items:
-              $ref: '#/components/schemas/Question'
-          location_questions:
-            type: array
-            items:
-              $ref: '#/components/schemas/Question'
-          demographic_questions:
-            type:
-            - object
-            - 'null'
-          compliance:
-            type:
-            - array
-            - 'null'
-          ai_disclaimer:
-            type:
-            - string
-            - 'null'
-            description: AI-usage disclaimer text shown to applicants.
-          include_ai_disclaimer:
-            type: boolean
-          ai_opt_out_request_url:
-            type:
-            - string
-            - 'null'
-            format: uri
-            description: URL an applicant uses to opt out of AI-assisted evaluation.
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html
