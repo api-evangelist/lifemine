@@ -9,354 +9,42 @@ artifacts:
   authentication/lifemine-authentication.yml:
     method: derived
     evidence: declared in the artifact
-  collections/lifemine-abilities-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-abilities-api
-  collections/lifemine-abilities-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-abilities-api
-  collections/lifemine-block-directory-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-block-directory-api
-  collections/lifemine-block-directory-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-block-directory-api
-  collections/lifemine-block-patterns-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-block-patterns-api
-  collections/lifemine-block-patterns-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-block-patterns-api
-  collections/lifemine-block-renderer-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-block-renderer-api
-  collections/lifemine-block-renderer-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-block-renderer-api
-  collections/lifemine-block-types-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-block-types-api
-  collections/lifemine-block-types-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-block-types-api
-  collections/lifemine-blocks-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-blocks-api
-  collections/lifemine-blocks-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-blocks-api
   collections/lifemine-board-api.opencollection.json:
     method: derived
     evidence: openapi/lifemine-board-api
   collections/lifemine-board-api.postman_collection.json:
     method: derived
     evidence: openapi/lifemine-board-api
-  collections/lifemine-categories-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-categories-api
-  collections/lifemine-categories-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-categories-api
-  collections/lifemine-comments-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-comments-api
-  collections/lifemine-comments-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-comments-api
-  collections/lifemine-customgf-v2-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-customgf-v2-api
-  collections/lifemine-customgf-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-customgf-v2-api
   collections/lifemine-departments-api.opencollection.json:
     method: derived
     evidence: openapi/lifemine-departments-api
   collections/lifemine-departments-api.postman_collection.json:
     method: derived
     evidence: openapi/lifemine-departments-api
-  collections/lifemine-directory-sizes-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-directory-sizes-api
-  collections/lifemine-directory-sizes-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-directory-sizes-api
   collections/lifemine-education-api.opencollection.json:
     method: derived
     evidence: openapi/lifemine-education-api
   collections/lifemine-education-api.postman_collection.json:
     method: derived
     evidence: openapi/lifemine-education-api
-  collections/lifemine-embed-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-embed-api
-  collections/lifemine-embed-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-embed-api
-  collections/lifemine-export-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-export-api
-  collections/lifemine-export-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-export-api
-  collections/lifemine-font-collections-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-font-collections-api
-  collections/lifemine-font-collections-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-font-collections-api
-  collections/lifemine-font-families-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-font-families-api
-  collections/lifemine-font-families-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-font-families-api
-  collections/lifemine-forms-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-forms-api
-  collections/lifemine-forms-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-forms-api
-  collections/lifemine-global-styles-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-global-styles-api
-  collections/lifemine-global-styles-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-global-styles-api
-  collections/lifemine-icons-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-icons-api
-  collections/lifemine-icons-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-icons-api
   collections/lifemine-jobs-api.opencollection.json:
     method: derived
     evidence: openapi/lifemine-jobs-api
   collections/lifemine-jobs-api.postman_collection.json:
     method: derived
     evidence: openapi/lifemine-jobs-api
-  collections/lifemine-media-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-media-api
-  collections/lifemine-media-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-media-api
-  collections/lifemine-menu-items-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-menu-items-api
-  collections/lifemine-menu-items-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-menu-items-api
-  collections/lifemine-menu-locations-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-menu-locations-api
-  collections/lifemine-menu-locations-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-menu-locations-api
-  collections/lifemine-menus-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-menus-api
-  collections/lifemine-menus-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-menus-api
-  collections/lifemine-navigation-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-navigation-api
-  collections/lifemine-navigation-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-navigation-api
-  collections/lifemine-navigation-fallback-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-navigation-fallback-api
-  collections/lifemine-navigation-fallback-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-navigation-fallback-api
-  collections/lifemine-oembed-1-0-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-oembed-1-0-api
-  collections/lifemine-oembed-1-0-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-oembed-1-0-api
   collections/lifemine-offices-api.opencollection.json:
     method: derived
     evidence: openapi/lifemine-offices-api
   collections/lifemine-offices-api.postman_collection.json:
     method: derived
     evidence: openapi/lifemine-offices-api
-  collections/lifemine-pages-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-pages-api
-  collections/lifemine-pages-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-pages-api
-  collections/lifemine-pattern-directory-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-pattern-directory-api
-  collections/lifemine-pattern-directory-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-pattern-directory-api
-  collections/lifemine-plugins-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-plugins-api
-  collections/lifemine-plugins-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-plugins-api
-  collections/lifemine-posts-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-posts-api
-  collections/lifemine-posts-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-posts-api
-  collections/lifemine-proxy-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-proxy-api
-  collections/lifemine-proxy-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-proxy-api
-  collections/lifemine-root-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-root-api
-  collections/lifemine-root-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-root-api
-  collections/lifemine-search-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-search-api
-  collections/lifemine-search-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-search-api
   collections/lifemine-sections-api.opencollection.json:
     method: derived
     evidence: openapi/lifemine-sections-api
   collections/lifemine-sections-api.postman_collection.json:
     method: derived
     evidence: openapi/lifemine-sections-api
-  collections/lifemine-settings-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-settings-api
-  collections/lifemine-settings-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-settings-api
-  collections/lifemine-sidebars-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-sidebars-api
-  collections/lifemine-sidebars-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-sidebars-api
-  collections/lifemine-statuses-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-statuses-api
-  collections/lifemine-statuses-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-statuses-api
-  collections/lifemine-tags-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-tags-api
-  collections/lifemine-tags-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-tags-api
-  collections/lifemine-taxonomies-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-taxonomies-api
-  collections/lifemine-taxonomies-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-taxonomies-api
-  collections/lifemine-team-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-team-api
-  collections/lifemine-team-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-team-api
-  collections/lifemine-team-categories-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-team-categories-api
-  collections/lifemine-team-categories-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-team-categories-api
-  collections/lifemine-template-parts-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-template-parts-api
-  collections/lifemine-template-parts-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-template-parts-api
-  collections/lifemine-templates-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-templates-api
-  collections/lifemine-templates-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-templates-api
-  collections/lifemine-tests-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-tests-api
-  collections/lifemine-tests-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-tests-api
-  collections/lifemine-themes-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-themes-api
-  collections/lifemine-themes-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-themes-api
-  collections/lifemine-types-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-types-api
-  collections/lifemine-types-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-types-api
-  collections/lifemine-url-details-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-url-details-api
-  collections/lifemine-url-details-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-url-details-api
-  collections/lifemine-users-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-users-api
-  collections/lifemine-users-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-users-api
-  collections/lifemine-widget-types-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-widget-types-api
-  collections/lifemine-widget-types-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-widget-types-api
-  collections/lifemine-widgets-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-widgets-api
-  collections/lifemine-widgets-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-widgets-api
-  collections/lifemine-wp-abilities-v1-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-abilities-v1-api
-  collections/lifemine-wp-abilities-v1-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-abilities-v1-api
-  collections/lifemine-wp-block-editor-v1-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-block-editor-v1-api
-  collections/lifemine-wp-block-editor-v1-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-block-editor-v1-api
-  collections/lifemine-wp-pattern-category-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-pattern-category-api
-  collections/lifemine-wp-pattern-category-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-pattern-category-api
-  collections/lifemine-wp-site-health-v1-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-site-health-v1-api
-  collections/lifemine-wp-site-health-v1-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-site-health-v1-api
-  collections/lifemine-wp-v2-api.opencollection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-v2-api
-  collections/lifemine-wp-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/lifemine-wp-v2-api
   conformance/lifemine-conformance.yml:
     method: derived
     evidence: declared in the artifact
@@ -393,6 +81,9 @@ artifacts:
   examples/lifemine-team-example.json:
     method: unknown
     evidence: no authorship recorded
+  front-door-ai/2026-09-17.yml:
+    method: unknown
+    evidence: no authorship recorded
   graphql/lifemine-graphql.yml:
     method: unknown
     evidence: no authorship recorded
@@ -417,55 +108,7 @@ artifacts:
   json-schema/lifemine-team_categories-schema.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -552,6 +195,123 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/lifemine-lifecycle.yml:
     method: derived
     evidence: declared in the artifact
@@ -566,179 +326,24 @@ artifacts:
     evidence: declared in the artifact
   openapi/_original/lifemine-wp-json-index.json:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
-  openapi/lifemine-abilities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-block-directory-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-block-patterns-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-block-renderer-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-block-types-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-blocks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/lifemine-board-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-categories-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-comments-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-customgf-v2-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
   openapi/lifemine-departments-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
-  openapi/lifemine-directory-sizes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
   openapi/lifemine-education-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-embed-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-export-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-font-collections-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-font-families-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-forms-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-global-styles-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-icons-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
   openapi/lifemine-jobs-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
-  openapi/lifemine-media-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-menu-items-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-menu-locations-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-menus-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-navigation-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-navigation-fallback-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-oembed-1-0-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
   openapi/lifemine-offices-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
-  openapi/lifemine-pages-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-pattern-directory-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-plugins-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-posts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-proxy-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-root-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-search-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
   openapi/lifemine-sections-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-settings-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-sidebars-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-statuses-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-tags-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-taxonomies-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-team-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-team-categories-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-template-parts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-templates-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-tests-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-themes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-types-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-url-details-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-users-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-widget-types-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-widgets-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-wp-abilities-v1-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-wp-block-editor-v1-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-wp-pattern-category-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-wp-site-health-v1-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/lifemine-wp-v2-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
   overlays/lifemine-careers-overlay.yaml:
