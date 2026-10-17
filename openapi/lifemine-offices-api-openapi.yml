@@ -112,30 +112,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Department'
-    DataCompliance:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Compliance regime, e.g. gdpr.
-        requires_consent:
-          type: boolean
-        requires_processing_consent:
-          type: boolean
-        requires_retention_consent:
-          type: boolean
-        retention_period:
-          type:
-          - integer
-          - 'null'
-        demographic_data_consent_applies:
-          type: boolean
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     Department:
       type: object
       properties:
@@ -163,12 +139,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Job'
+    DataCompliance:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Compliance regime, e.g. gdpr.
+        requires_consent:
+          type: boolean
+        requires_processing_consent:
+          type: boolean
+        requires_retention_consent:
+          type: boolean
+        retention_period:
+          type:
+          - integer
+          - 'null'
+        demographic_data_consent_applies:
+          type: boolean
     Error:
       type: object
       description: Greenhouse error envelope.
       properties:
         error:
           type: string
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     Job:
       type: object
       description: A published role as returned by listJobs.

@@ -69,6 +69,18 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Section:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
     DataCompliance:
       type: object
       properties:
@@ -87,18 +99,18 @@ components:
           - 'null'
         demographic_data_consent_applies:
           type: boolean
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     Error:
       type: object
       description: Greenhouse error envelope.
       properties:
         error:
           type: string
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Free-text location, e.g. "Watertown, Massachusetts, United States".
     Job:
       type: object
       description: A published role as returned by listJobs.
@@ -152,18 +164,6 @@ components:
         content:
           type: string
           description: HTML job description. Present only when `content=true`.
-    Section:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
 externalDocs:
   description: Greenhouse Job Board API documentation
   url: https://developers.greenhouse.io/job-board.html
